@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f4f6fb">
+  <title>Arif All Document</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand-mark">AD</div>
+      <div><h1>Arif All Document</h1><p>Your personal document space</p></div>
+    </header>
+
+    <section id="authPanel" class="panel auth-panel">
+      <div class="tabs">
+        <button id="loginTab" class="tab active" type="button">Login</button>
+        <button id="signupTab" class="tab" type="button">Create account</button>
+      </div>
+      <h2 id="authTitle">Welcome back</h2>
+      <p class="muted">Sign in to securely access your files.</p>
+      <form id="authForm">
+        <label>Email address<input id="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+        <label>Password<input id="password" type="password" autocomplete="current-password" minlength="8" required placeholder="At least 8 characters"></label>
+        <button id="authSubmit" class="primary full" type="submit">Login</button>
+      </form>
+      <button id="forgotBtn" class="link-btn" type="button">Forgot password?</button>
+      <p id="authMessage" class="message" role="status"></p>
+    </section>
+
+    <section id="appPanel" hidden>
+      <div class="welcome-row">
+        <div><p class="eyebrow">YOUR PRIVATE SPACE</p><h2>My documents</h2><p id="userEmail" class="muted"></p></div>
+        <button id="logoutBtn" class="secondary" type="button">Log out</button>
+      </div>
+
+      <section class="panel upload-panel">
+        <div><h3>Upload a document</h3><p class="muted">PDF, images, Office files, ZIP, audio and video.</p></div>
+        <label class="file-picker">Choose file<input id="fileInput" type="file"></label>
+        <div id="selectedFile" class="muted small">No file selected</div>
+        <button id="uploadBtn" class="primary" type="button" disabled>Upload file</button>
+        <p id="uploadMessage" class="message" role="status"></p>
+      </section>
+
+      <section class="files-section">
+        <div class="section-heading"><div><h3>Your files</h3><p class="muted">Only you can access files in your account.</p></div><button id="refreshBtn" class="secondary" type="button">Refresh</button></div>
+        <div id="fileList" class="file-list"><div class="empty">Loading your files…</div></div>
+      </section>
+    </section>
+    <footer>Keep your account password private. Always keep a separate backup of important documents.</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
