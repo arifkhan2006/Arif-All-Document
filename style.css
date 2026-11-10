@@ -1,1 +1,72 @@
-*{box-sizing:border-box}body{margin:0;background:#f4f6fb;color:#172033;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}.shell{max-width:850px;margin:0 auto;padding:28px 18px 50px}.topbar{display:flex;align-items:center;gap:13px;margin:8px 0 30px}.brand-mark{width:48px;height:48px;border-radius:15px;background:#244c9a;color:white;display:grid;place-items:center;font-weight:800;letter-spacing:.5px}.topbar h1{font-size:20px;margin:0}.topbar p,.muted{color:#718096;margin:4px 0 0;font-size:14px}.panel{background:white;border:1px solid #e4e9f2;border-radius:18px;padding:24px;box-shadow:0 8px 28px #1e35500a}.auth-panel{max-width:440px;margin:0 auto}.tabs{display:flex;gap:8px;background:#f2f5fa;padding:5px;border-radius:12px;margin-bottom:24px}.tab{border:0;background:transparent;padding:10px 14px;border-radius:9px;flex:1;color:#667085;font-weight:650}.tab.active{background:white;color:#244c9a;box-shadow:0 1px 5px #1e355014}h2{font-size:25px;margin:0 0 6px}h3{font-size:18px;margin:0 0 5px}form{margin-top:22px}label{display:block;font-size:14px;font-weight:650;margin:15px 0;color:#344054}input:not([type=file]){display:block;width:100%;margin-top:7px;padding:13px 14px;border:1px solid #d7deea;border-radius:10px;font:inherit;outline:none}input:focus{border-color:#4169b2;box-shadow:0 0 0 3px #4169b21a}.primary,.secondary,.file-picker{border:0;border-radius:10px;padding:12px 17px;font:inherit;font-weight:700;cursor:pointer}.primary{background:#2454a6;color:white}.primary:disabled{opacity:.45;cursor:not-allowed}.full{width:100%;margin-top:8px}.secondary{background:#edf1f7;color:#344054}.link-btn{border:0;background:none;color:#2454a6;margin-top:15px;padding:5px;cursor:pointer}.message{font-size:13px;min-height:18px;color:#2454a6}.message.error{color:#b42318}.welcome-row,.section-heading{display:flex;justify-content:space-between;align-items:center;gap:15px}.welcome-row{margin:20px 0 24px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:1.2px;color:#2454a6;margin:0 0 5px}.upload-panel{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}.upload-panel>div:first-child{grid-column:1/-1}.file-picker{background:#edf1f7;color:#344054;display:inline-block;text-align:center}.file-picker input{display:none}.small{font-size:12px}.files-section{margin-top:28px}.section-heading{margin-bottom:15px}.file-list{display:grid;gap:10px}.file-card{background:white;border:1px solid #e4e9f2;border-radius:14px;padding:15px;display:flex;align-items:center;gap:12px}.file-icon{width:42px;height:42px;display:grid;place-items:center;background:#eef3fb;border-radius:12px;font-size:20px}.file-info{min-width:0;flex:1}.file-name{font-weight:700;overflow-wrap:anywhere}.file-meta{font-size:12px;color:#718096;margin-top:3px}.file-actions{display:flex;gap:7px}.file-actions button{border:0;border-radius:8px;padding:9px 11px;font-weight:650;cursor:pointer}.download{background:#eaf1ff;color:#2454a6}.delete{background:#fff0ef;color:#b42318}.empty{padding:30px;text-align:center;background:white;border:1px dashed #cbd5e1;border-radius:14px;color:#718096}footer{margin-top:35px;text-align:center;color:#8a94a6;font-size:12px;line-height:1.6}[hidden]{display:none!important}@media(max-width:560px){.shell{padding:18px 13px 35px}.panel{padding:18px}.upload-panel{grid-template-columns:1fr}.upload-panel>div:first-child{grid-column:auto}.file-picker,.upload-panel>.primary{width:100%}.file-card{align-items:flex-start;flex-wrap:wrap}.file-actions{width:100%;padding-left:54px}.file-actions button{flex:1}.welcome-row h2{font-size:22px}}
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arif All Document</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<header>
+  <h2>📁 ARIF ALL DOCUMENT</h2>
+  <p>Your Personal Document Manager</p>
+</header>
+
+<section id="auth">
+  <h2>Welcome Back</h2>
+  <input id="email" type="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <button onclick="signup()">Create Account</button>
+  <p id="message"></p>
+</section>
+
+<main id="dashboard" hidden>
+  <h2 id="welcome">My Dashboard</h2>
+  <button onclick="logout()">Logout</button>
+
+  <div class="stats">
+    <div>Total Files: <b id="total">0</b></div>
+    <div>Storage Used: <b id="storage">0 MB</b></div>
+  </div>
+
+  <h3>Upload Documents</h3>
+  <input type="file" id="files" multiple>
+  <button onclick="uploadFiles()">Upload Files</button>
+
+  <h3>Create Folder</h3>
+  <input id="folderName" placeholder="Folder Name">
+  <button onclick="createFolder()">Create Folder</button>
+  <div id="folders"></div>
+
+  <h3>Search Documents</h3>
+  <input id="search" placeholder="Search file..." oninput="showFiles()">
+
+  <h3>My Documents</h3>
+  <button onclick="selectAll()">Select All</button>
+  <button onclick="bulkDelete()">Delete Selected</button>
+  <div id="fileList"></div>
+
+  <section id="admin" hidden>
+    <h2>Admin Panel</h2>
+    <p>Total Users: <b id="users">0</b></p>
+  </section>
+
+  <h3>Account Settings</h3>
+  <input id="displayName" placeholder="Your Name">
+  <input type="file" id="avatar" accept="image/*">
+  <button onclick="saveProfile()">Save Profile</button>
+  <img id="profilePhoto" width="70">
+</main>
+
+<div id="preview" class="preview" hidden>
+  <button onclick="closePreview()">Close</button>
+  <div id="previewContent"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
