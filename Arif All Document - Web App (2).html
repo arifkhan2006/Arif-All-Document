@@ -1,0 +1,2536 @@
+<!DOCTYPE html>
+<html lang="bn" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arif All Document — Your Document, Our Priority</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts: Inter & Hind Siliguri for Bangla -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- EmailJS SDK for sending real emails -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      // EmailJS ইনিশিয়ালাইজেশন (প্রয়োজনে আপনার EmailJS পাবলিক কী দিয়ে পরিবর্তন করতে পারেন)
+      if (window.emailjs) {
+        emailjs.init("YOUR_PUBLIC_KEY");
+      }
+    })();
+  </script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '"Hind Siliguri"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              navy: '#0b132b',
+              deep: '#1c2541',
+              accent: '#3a506b',
+              gold: '#f59e0b',
+              goldLight: '#fbbf24',
+              goldDark: '#b45309',
+              royal: '#2563eb',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.05);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(100, 116, 139, 0.3);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(100, 116, 139, 0.5);
+    }
+
+    /* Gold gradient shine */
+    .gold-shine {
+      background: linear-gradient(135deg, #FFE259 0%, #FFA751 100%);
+    }
+    .royal-gradient {
+      background: radial-gradient(circle at 20% 20%, #1e293b 0%, #0f172a 40%, #020617 100%);
+    }
+
+    /* Ambient animated glow & 3D card accents */
+    .glow-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glow-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 30px -10px rgba(37, 99, 235, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    }
+    
+    .gold-border-glow {
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.25);
+    }
+
+    /* ================= SMOOTH ANIMATIONS ================= */
+    @keyframes floatOrb {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-25px) scale(1.08); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.45; filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.4)); }
+      50% { opacity: 0.9; filter: drop-shadow(0 0 22px rgba(245, 158, 11, 0.85)); }
+    }
+    @keyframes cardFadeIn {
+      from { opacity: 0; transform: translateY(18px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes subtleRotate {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(4deg); }
+    }
+    @keyframes shimmerBar {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .anim-float-1 {
+      animation: floatOrb 8s ease-in-out infinite;
+    }
+    .anim-float-2 {
+      animation: floatOrb 10s ease-in-out 3s infinite reverse;
+    }
+    .anim-float-3 {
+      animation: floatOrb 12s ease-in-out 1.5s infinite;
+    }
+    .anim-crown-shine {
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+    .anim-logo-badge {
+      animation: subtleRotate 6s ease-in-out infinite;
+    }
+    .anim-card-enter {
+      animation: cardFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .shimmer-text {
+      background: linear-gradient(90deg, #fef08a 0%, #fbbf24 40%, #ffffff 50%, #fbbf24 60%, #fef08a 100%);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      animation: shimmerBar 4s linear infinite;
+    }
+  </style>
+</head>
+<body class="h-full bg-slate-50 text-slate-800 font-sans antialiased selection:bg-amber-400 selection:text-slate-900 transition-colors duration-300">
+
+  <!-- ==============================================
+       APP CONTAINER
+       ============================================== -->
+  <div id="app" class="min-h-full flex flex-col">
+
+    <!-- ==================== AUTH VIEW (Sign In / Sign Up) ==================== -->
+    <div id="authView" class="hidden min-h-screen royal-gradient text-white flex flex-col justify-center items-center px-4 py-8 relative overflow-hidden">
+      <!-- Glow ambient background circles with smooth floating animation -->
+      <div class="absolute -top-32 -left-32 w-96 h-96 bg-blue-600/30 rounded-full blur-[100px] pointer-events-none anim-float-1"></div>
+      <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-amber-500/25 rounded-full blur-[100px] pointer-events-none anim-float-2"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none anim-float-3"></div>
+
+      <!-- Main Auth Box -->
+      <div class="w-full max-w-md bg-slate-900/80 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 sm:p-9 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7)] relative z-10 gold-border-glow anim-card-enter">
+        
+        <!-- Modern Premium Brand Emblem -->
+        <div class="text-center mb-6">
+          <div class="relative inline-block mx-auto mb-3 select-none">
+            <!-- Modern Minimalist & Premium 3D Shield/Cloud Vault Icon -->
+            <div class="w-24 h-24 sm:w-28 sm:h-28 mx-auto relative flex items-center justify-center">
+              <!-- Animated Glowing Halo -->
+              <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-amber-500 via-amber-300 to-blue-600 opacity-60 blur-xl animate-pulse"></div>
+              
+              <!-- Outer Badge Layer -->
+              <div class="relative w-full h-full rounded-3xl bg-gradient-to-br from-amber-400/80 via-slate-800 to-blue-600/60 p-[2px] shadow-2xl anim-logo-badge">
+                <div class="w-full h-full rounded-[22px] bg-gradient-to-b from-slate-900 via-[#0d162d] to-[#050b18] flex flex-col items-center justify-center relative overflow-hidden">
+                  
+                  <div class="absolute -top-6 -right-6 w-16 h-16 bg-amber-400/20 rounded-full blur-md"></div>
+                  <div class="absolute -bottom-6 -left-6 w-16 h-16 bg-blue-500/20 rounded-full blur-md"></div>
+
+                  <!-- Central Crown + Document Motif -->
+                  <div class="relative z-10 flex flex-col items-center">
+                    <div class="flex items-center gap-1 mb-1">
+                      <i class="fa-solid fa-crown text-amber-400 text-base filter drop-shadow-[0_2px_8px_rgba(251,191,36,0.8)] anim-crown-shine"></i>
+                    </div>
+                    
+                    <div class="relative">
+                      <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-500 to-amber-400 p-[1.5px] shadow-lg flex items-center justify-center">
+                        <div class="w-full h-full bg-[#0a1329] rounded-[14px] flex items-center justify-center">
+                          <i class="fa-solid fa-shield-halved text-transparent bg-clip-text bg-gradient-to-tr from-amber-300 to-yellow-400 text-xl"></i>
+                        </div>
+                      </div>
+                      <span class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-slate-900 flex items-center justify-center text-[9px] text-white shadow">
+                        <i class="fa-solid fa-check"></i>
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Clean, Luxury Typography -->
+          <div class="space-y-1">
+            <div class="flex items-center justify-center gap-2">
+              <span class="text-[10px] font-black tracking-[0.3em] text-amber-400 uppercase bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">Personal Cloud Vault</span>
+            </div>
+            <h2 class="text-2xl font-black tracking-tight text-white mt-2">
+              Arif <span class="shimmer-text">All Document</span>
+            </h2>
+            <p class="text-slate-400 text-xs">আপনার সকল গুরুত্বপূর্ণ ফাইল নিরাপদে সংরক্ষণ করুন</p>
+          </div>
+        </div>
+
+        <!-- Tab Switcher -->
+        <div class="flex rounded-xl bg-slate-800/80 p-1 mb-6 border border-slate-700">
+          <button id="tabLogin" onclick="switchAuthTab('login')" class="flex-1 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md transition-all">
+            লগইন (Login)
+          </button>
+          <button id="tabRegister" onclick="switchAuthTab('register')" class="flex-1 py-2 text-sm font-semibold rounded-lg text-slate-300 hover:text-white transition-all">
+            সাইন আপ (Sign Up)
+          </button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" onsubmit="handleAuthLogin(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">ইমেইল এড্রেস (Email Address)</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                <i class="fa-regular fa-envelope"></i>
+              </span>
+              <input type="email" id="loginEmail" required value="arif@document.com" placeholder="name@example.com" class="w-full pl-10 pr-4 py-3 bg-slate-800/90 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400 text-sm">
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">পাসওয়ার্ড (Password)</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                <i class="fa-solid fa-lock"></i>
+              </span>
+              <input type="password" id="loginPassword" required value="123456" placeholder="••••••••" class="w-full pl-10 pr-4 py-3 bg-slate-800/90 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400 text-sm">
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" checked class="rounded border-slate-700 text-amber-500 focus:ring-0">
+              <span>মনে রাখুন (Remember me)</span>
+            </label>
+            <button type="button" onclick="openForgotModal()" class="text-amber-400 hover:underline">পাসওয়ার্ড ভুলে গেছেন?</button>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-sm shadow-lg shadow-emerald-700/30 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+            <span>LOGIN</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </button>
+        </form>
+
+        <!-- Register Form -->
+        <form id="registerForm" onsubmit="handleAuthRegister(event)" class="space-y-4 hidden">
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">আপনার পূর্ণ নাম (Full Name)</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                <i class="fa-regular fa-user"></i>
+              </span>
+              <input type="text" id="regName" required placeholder="Arif Khan" class="w-full pl-10 pr-4 py-3 bg-slate-800/90 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400 text-sm">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">ইমেইল এড্রেস (Email Address)</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                <i class="fa-regular fa-envelope"></i>
+              </span>
+              <input type="email" id="regEmail" required placeholder="name@example.com" class="w-full pl-10 pr-4 py-3 bg-slate-800/90 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400 text-sm">
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">পাসওয়ার্ড নির্ধারণ করুন (Create Password)</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                <i class="fa-solid fa-lock"></i>
+              </span>
+              <input type="password" id="regPassword" required minlength="6" placeholder="কমপক্ষে ৬ ডিজিট" class="w-full pl-10 pr-4 py-3 bg-slate-800/90 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400 text-sm">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">পুনরায় পাসওয়ার্ড লিখুন (Re-enter Password)</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                <i class="fa-solid fa-shield-check"></i>
+              </span>
+              <input type="password" id="regPasswordConfirm" required minlength="6" placeholder="একই পাসওয়ার্ড পুনরায় লিখুন" class="w-full pl-10 pr-4 py-3 bg-slate-800/90 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400 text-sm">
+            </div>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-sm shadow-lg shadow-amber-500/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+            <span>CREATE ACCOUNT</span>
+            <i class="fa-solid fa-user-plus text-xs"></i>
+          </button>
+        </form>
+
+        <!-- Supported types banner -->
+        <div class="mt-6 pt-5 border-t border-slate-800 text-center">
+          <p class="text-xs text-slate-400 mb-2">যে ফাইলগুলো সুরক্ষিত রাখতে পারবেন:</p>
+          <div class="flex flex-wrap justify-center gap-1.5 text-[11px] font-medium text-amber-300">
+            <span class="bg-slate-800 px-2 py-0.5 rounded border border-slate-700">PDF</span>
+            <span class="bg-slate-800 px-2 py-0.5 rounded border border-slate-700">Images</span>
+            <span class="bg-slate-800 px-2 py-0.5 rounded border border-slate-700">Word (DOCX)</span>
+            <span class="bg-slate-800 px-2 py-0.5 rounded border border-slate-700">Excel (XLSX)</span>
+            <span class="bg-slate-800 px-2 py-0.5 rounded border border-slate-700">ZIP</span>
+            <span class="bg-slate-800 px-2 py-0.5 rounded border border-slate-700">Video</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-6 text-center text-xs text-slate-400">
+        &copy; 2026 Arif All Document. All rights reserved. • <span class="text-amber-400">www.AriffAllDocument.com</span>
+      </div>
+    </div>
+
+
+    <!-- ==================== MAIN DASHBOARD VIEW ==================== -->
+    <div id="mainDashboardView" class="flex-1 flex flex-col bg-slate-100 min-h-screen">
+      
+      <!-- Top Navigation Bar -->
+      <header class="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+          
+          <!-- Logo & Title -->
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-amber-500 via-yellow-300 to-amber-600 p-0.5 shadow-md flex items-center justify-center flex-shrink-0 relative">
+              <div class="w-full h-full bg-[#0a183d] rounded-full flex flex-col items-center justify-center border border-amber-300/80">
+                <i class="fa-solid fa-crown text-[10px] text-amber-400 -mb-0.5"></i>
+                <span class="text-xs font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-400 leading-none">A</span>
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center gap-1.5">
+                <span class="font-black text-lg text-slate-900 tracking-tight leading-tight">ARIF ALL DOCUMENT</span>
+                <span class="hidden sm:inline-block bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded border border-amber-300">PRO</span>
+              </div>
+              <p class="text-[11px] text-slate-500 font-medium hidden sm:block">Your Document, Our Priority</p>
+            </div>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="flex-1 max-w-md hidden md:block">
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+                <i class="fa-solid fa-magnifying-glass text-sm"></i>
+              </span>
+              <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="ফাইল বা ডকুমেন্টের নাম দিয়ে সার্চ করুন..." class="w-full pl-9 pr-4 py-2 bg-slate-100 hover:bg-slate-50 focus:bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all">
+            </div>
+          </div>
+
+          <!-- User Actions & Profile -->
+          <div class="flex items-center gap-3">
+            <!-- Upload Shortcut Button -->
+            <button onclick="triggerUploadModal()" class="hidden sm:inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-sm transition-all active:scale-95">
+              <i class="fa-solid fa-cloud-arrow-up text-sm"></i>
+              <span>আপলোড করুন</span>
+            </button>
+
+            <!-- Notification bell (mock) -->
+            <button onclick="showCustomAlert('আপনার কোনো নতুন নোটিফিকেশন নেই। সমস্ত ফাইল সুরক্ষিত আছে!')" class="p-2 text-slate-500 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition">
+              <i class="fa-regular fa-bell text-lg"></i>
+            </button>
+
+            <!-- User Menu & Profile Edit Trigger -->
+            <div class="flex items-center gap-2.5 pl-2 border-l border-slate-200">
+              <button onclick="openProfileModal()" title="প্রোফাইল পরিবর্তন করুন" class="flex items-center gap-2 p-1 hover:bg-slate-100 rounded-xl transition group">
+                <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-400 to-amber-600 text-white font-bold flex items-center justify-center text-sm shadow-sm overflow-hidden relative" id="userAvatarContainer">
+                  <span id="userAvatar">A</span>
+                  <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition-opacity">
+                    <i class="fa-solid fa-pen text-[10px]"></i>
+                  </div>
+                </div>
+                <div class="hidden lg:block text-left text-xs">
+                  <div class="font-bold text-slate-800 flex items-center gap-1">
+                    <span id="userNameLabel">Arif Khan</span>
+                    <i class="fa-solid fa-pen text-[9px] text-slate-400 group-hover:text-blue-600 transition"></i>
+                  </div>
+                  <div class="text-slate-500 truncate max-w-[120px]" id="userEmailLabel">arif@document.com</div>
+                </div>
+              </button>
+              <button onclick="handleLogout()" title="লগআউট" class="p-2 text-rose-500 hover:bg-rose-50 rounded-xl transition ml-1">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Mobile Search Bar -->
+        <div class="p-3 border-t border-slate-200 md:hidden bg-white">
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+              <i class="fa-solid fa-magnifying-glass text-sm"></i>
+            </span>
+            <input type="text" oninput="handleSearch(this.value)" placeholder="ফাইল খুঁজুন..." class="w-full pl-9 pr-4 py-2 bg-slate-100 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content Area -->
+      <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+        <!-- Banner with Emblem & Slogan -->
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl text-white p-6 sm:p-10 bg-gradient-to-r from-slate-950 via-[#0b1736] to-[#12285a] border border-amber-500/30 anim-card-enter">
+          <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl pointer-events-none anim-float-1"></div>
+          <div class="absolute top-0 right-1/4 w-60 h-60 bg-amber-500/15 rounded-full blur-3xl pointer-events-none anim-float-2"></div>
+          
+          <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div class="space-y-3">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-amber-500/20 to-blue-500/20 border border-amber-400/40 text-amber-300 text-xs font-semibold shadow-inner">
+                <i class="fa-solid fa-shield-halved text-amber-400 anim-crown-shine"></i> ২৫৬-বিট সুরক্ষিত পার্সোনাল ক্লাউড ভল্ট
+              </div>
+              <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+                স্বাগতম, <span id="bannerUserName" class="shimmer-text font-black">Arif Khan</span>!
+              </h2>
+              <p class="text-slate-300 text-sm max-w-xl leading-relaxed">
+                আপনার প্রয়োজনীয় সকল ডকুমেন্টস (PDF, Word, Excel, Images, Videos & ZIP) একই স্থানে ক্লাউডে সুরক্ষিত রাখুন, প্রিভিউ করুন এবং যেকোনো সময় এক ক্লিকে ডাউনলোড করুন।
+              </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3">
+              <button onclick="triggerUploadModal()" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-bold text-sm shadow-[0_10px_25px_rgba(245,158,11,0.35)] active:scale-95 transition flex items-center gap-2.5 hover:shadow-[0_10px_30px_rgba(245,158,11,0.55)]">
+                <i class="fa-solid fa-cloud-arrow-up text-base animate-bounce"></i>
+                <span>নতুন ফাইল আপলোড</span>
+              </button>
+              <button onclick="openFolderModal()" class="px-5 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-sm backdrop-blur-md transition flex items-center gap-2 shadow-sm hover:scale-[1.02]">
+                <i class="fa-solid fa-folder-plus text-base text-amber-400"></i>
+                <span>নতুন ফোল্ডার</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Action Cards (Inspired by Reference UI) -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          <!-- Card 1: My Documents -->
+          <div onclick="filterFiles('all')" class="glow-card border border-slate-200/90 rounded-3xl p-5 shadow-xs cursor-pointer group">
+            <div class="w-13 h-13 w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-4 group-hover:bg-gradient-to-tr group-hover:from-blue-600 group-hover:to-indigo-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-blue-500/30 transition-all duration-300">
+              <i class="fa-regular fa-file-lines"></i>
+            </div>
+            <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">My Documents</p>
+            <h3 class="text-xl font-extrabold text-slate-800 mt-1">All Files</h3>
+            <span class="text-xs text-blue-600 font-semibold inline-block mt-2 bg-blue-50 px-2.5 py-1 rounded-full" id="statAllFilesCount">0 টি ফাইল সংরক্ষিত</span>
+          </div>
+
+          <!-- Card 2: Upload Files -->
+          <div onclick="triggerUploadModal()" class="glow-card border border-slate-200/90 rounded-3xl p-5 shadow-xs cursor-pointer group">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl mb-4 group-hover:bg-gradient-to-tr group-hover:from-emerald-500 group-hover:to-teal-500 group-hover:text-white group-hover:shadow-lg group-hover:shadow-emerald-500/30 transition-all duration-300">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+            <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Upload Files</p>
+            <h3 class="text-xl font-extrabold text-slate-800 mt-1">Add New</h3>
+            <span class="text-xs text-emerald-600 font-semibold inline-block mt-2 bg-emerald-50 px-2.5 py-1 rounded-full">PDF, DOC, ZIP, মিডিয়া</span>
+          </div>
+
+          <!-- Card 3: Folders -->
+          <div onclick="openFolderModal()" class="glow-card border border-slate-200/90 rounded-3xl p-5 shadow-xs cursor-pointer group">
+            <div class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl mb-4 group-hover:bg-gradient-to-tr group-hover:from-amber-400 group-hover:to-yellow-500 group-hover:text-slate-950 group-hover:shadow-lg group-hover:shadow-amber-500/30 transition-all duration-300">
+              <i class="fa-regular fa-folder-open"></i>
+            </div>
+            <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Organize Files</p>
+            <h3 class="text-xl font-extrabold text-slate-800 mt-1">My Folders</h3>
+            <span class="text-xs text-amber-600 font-semibold inline-block mt-2 bg-amber-50 px-2.5 py-1 rounded-full" id="statFolderCount">৪টি ফোল্ডার প্রস্তুত</span>
+          </div>
+
+          <!-- Card 4: Delete / Trash -->
+          <div onclick="viewTrashModal()" class="glow-card border border-slate-200/90 rounded-3xl p-5 shadow-xs cursor-pointer group">
+            <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-xl mb-4 group-hover:bg-gradient-to-tr group-hover:from-rose-500 group-hover:to-red-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-rose-500/30 transition-all duration-300">
+              <i class="fa-regular fa-trash-can"></i>
+            </div>
+            <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Remove Files</p>
+            <h3 class="text-xl font-extrabold text-slate-800 mt-1">Recycle Bin</h3>
+            <span class="text-xs text-rose-600 font-semibold inline-block mt-2 bg-rose-50 px-2.5 py-1 rounded-full" id="statTrashCount">০টি ডিলিট ফাইল</span>
+          </div>
+        </div>
+
+        <!-- Middle Section: Storage Widget & Quick Folders -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <!-- Storage Breakdown Card (Inspired by reference UI) -->
+          <div class="glow-card border border-slate-200/90 rounded-3xl p-6 shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="font-extrabold text-slate-900 text-base">Available Storage</h3>
+                <span class="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">ক্লাউড ড্রাইভ</span>
+              </div>
+
+              <!-- Storage Circle & Percent -->
+              <div class="flex items-center gap-5 my-4">
+                <div class="relative w-24 h-24 flex-shrink-0 flex items-center justify-center">
+                  <svg class="w-24 h-24 transform -rotate-90">
+                    <circle cx="48" cy="48" r="40" stroke="#f1f5f9" stroke-width="8" fill="none" />
+                    <circle id="storageCircleProgress" cx="48" cy="48" r="40" stroke="#2563eb" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="180" stroke-linecap="round" fill="none" class="transition-all duration-700" />
+                  </svg>
+                  <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                    <span id="storagePercentText" class="text-xl font-black text-slate-800">28%</span>
+                    <span class="text-[9px] uppercase font-bold tracking-wider text-slate-400">Used</span>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="text-base font-extrabold text-slate-800" id="storageSummaryText">2.8 GB / 100 GB</div>
+                  <p class="text-xs text-slate-500 mt-1">আপনার পার্সোনাল ডকুমেন্ট ক্লাউড স্টোরেজ ব্যবহার করা হচ্ছে।</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Categories progress bar lists -->
+            <div class="space-y-3 pt-3 border-t border-slate-100 text-xs">
+              <div>
+                <div class="flex justify-between font-medium text-slate-600 mb-1">
+                  <span class="flex items-center gap-1.5"><i class="fa-regular fa-file-pdf text-rose-500"></i> Documents (PDF, Doc, Excel)</span>
+                  <span id="docStorageLabel">1.2 GB</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                  <div class="bg-rose-500 h-1.5 rounded-full" style="width: 45%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between font-medium text-slate-600 mb-1">
+                  <span class="flex items-center gap-1.5"><i class="fa-regular fa-image text-blue-500"></i> Photos & Images</span>
+                  <span id="imgStorageLabel">980 MB</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                  <div class="bg-blue-500 h-1.5 rounded-full" style="width: 32%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between font-medium text-slate-600 mb-1">
+                  <span class="flex items-center gap-1.5"><i class="fa-solid fa-file-zipper text-amber-500"></i> Archives & Other (ZIP, Video)</span>
+                  <span id="otherStorageLabel">640 MB</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                  <div class="bg-amber-500 h-1.5 rounded-full" style="width: 20%"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Quick Folder Blocks (Inspired by Octom UI screenshot) -->
+          <div class="lg:col-span-2 glow-card border border-slate-200/90 rounded-3xl p-6 shadow-xs flex flex-col justify-between">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="font-extrabold text-slate-900 text-base">Folders & Categories</h3>
+                <p class="text-xs text-slate-500">আপনার ফাইল সাজিয়ে রাখুন</p>
+              </div>
+              <button onclick="openFolderModal()" class="text-xs font-bold text-blue-600 hover:text-blue-700 bg-blue-50 px-3 py-1.5 rounded-xl border border-blue-100 flex items-center gap-1 transition">
+                <span>+ নতুন ফোল্ডার</span>
+              </button>
+            </div>
+
+            <!-- Folders Grid -->
+            <div id="foldersContainer" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <!-- Dynamically populated or static defaults -->
+            </div>
+            
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <span>যেকোনো ফোল্ডারে ক্লিক করে ফিল্টার করুন</span>
+              <button onclick="filterFiles('all')" class="text-blue-600 hover:underline font-bold">সকল ফাইল দেখুন</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Files Section -->
+        <div class="glow-card border border-slate-200/90 rounded-3xl p-6 shadow-xs">
+          <!-- Filter Tabs & Controls -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+            <div>
+              <h3 class="text-lg font-bold text-slate-900" id="fileSectionTitle">All Files (সকল ডকুমেন্টস)</h3>
+              <p class="text-xs text-slate-500">ভিউ, প্রিভিউ, রিনেম ও ডাউনলোড অপশন সহ</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex flex-wrap items-center gap-1.5 text-xs">
+              <button onclick="filterFiles('all')" class="category-btn active px-3 py-1.5 rounded-xl font-medium transition bg-slate-900 text-white" data-category="all">All</button>
+              <button onclick="filterFiles('pdf')" class="category-btn px-3 py-1.5 rounded-xl font-medium transition text-slate-600 hover:bg-slate-100" data-category="pdf">PDF</button>
+              <button onclick="filterFiles('image')" class="category-btn px-3 py-1.5 rounded-xl font-medium transition text-slate-600 hover:bg-slate-100" data-category="image">ছবি (Images)</button>
+              <button onclick="filterFiles('word')" class="category-btn px-3 py-1.5 rounded-xl font-medium transition text-slate-600 hover:bg-slate-100" data-category="word">Word & Docs</button>
+              <button onclick="filterFiles('excel')" class="category-btn px-3 py-1.5 rounded-xl font-medium transition text-slate-600 hover:bg-slate-100" data-category="excel">Excel</button>
+              <button onclick="filterFiles('archive')" class="category-btn px-3 py-1.5 rounded-xl font-medium transition text-slate-600 hover:bg-slate-100" data-category="archive">ZIP / Media</button>
+              
+              <!-- View mode toggles -->
+              <div class="flex items-center ml-2 pl-2 border-l border-slate-200">
+                <button onclick="setViewMode('grid')" id="gridToggleBtn" class="p-1.5 text-blue-600 hover:bg-slate-100 rounded-lg" title="Grid View">
+                  <i class="fa-solid fa-grip text-sm"></i>
+                </button>
+                <button onclick="setViewMode('list')" id="listToggleBtn" class="p-1.5 text-slate-400 hover:bg-slate-100 rounded-lg" title="List View">
+                  <i class="fa-solid fa-list-ul text-sm"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- BATCH ACTIONS TOOLBAR (Select, Move, Delete Multiple Files) -->
+          <div id="batchActionBar" class="mt-4 p-3.5 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div class="flex items-center gap-3">
+              <label class="flex items-center gap-2 font-bold text-slate-800 cursor-pointer select-none">
+                <input type="checkbox" id="selectAllCheckbox" onchange="toggleSelectAll(this.checked)" class="w-4 h-4 rounded text-blue-600 border-slate-300 focus:ring-blue-500">
+                <span>Select All (সব সিলেক্ট করুন)</span>
+              </label>
+              <span id="selectedCountText" class="px-2.5 py-0.5 bg-blue-600 text-white rounded-full font-bold text-[11px]">0 নির্বাচিত</span>
+            </div>
+
+            <!-- Batch Move & Delete buttons -->
+            <div class="flex items-center gap-2">
+              <div class="flex items-center gap-1.5 bg-white px-2 py-1 rounded-xl border border-blue-200">
+                <span class="text-slate-600 font-semibold"><i class="fa-regular fa-folder text-blue-600"></i> মুভ করুন:</span>
+                <select id="bulkMoveFolderSelect" class="bg-transparent text-slate-800 font-bold focus:outline-none text-xs">
+                  <!-- dynamically filled with folders -->
+                </select>
+                <button onclick="executeBatchMove()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-3 py-1 rounded-lg transition active:scale-95">
+                  Move
+                </button>
+              </div>
+
+              <button onclick="executeBatchDelete()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-3.5 py-1.5 rounded-xl shadow-xs transition active:scale-95 flex items-center gap-1.5">
+                <i class="fa-regular fa-trash-can"></i>
+                <span>সিলেক্ট করা ফাইল মুছুন</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Empty State -->
+          <div id="emptyFilesState" class="hidden py-16 text-center">
+            <div class="w-20 h-20 mx-auto rounded-full bg-slate-100 flex items-center justify-center text-slate-400 text-3xl mb-4">
+              <i class="fa-regular fa-folder-open"></i>
+            </div>
+            <h4 class="text-base font-bold text-slate-700">কোনো ফাইল পাওয়া যায়নি</h4>
+            <p class="text-xs text-slate-500 max-w-sm mx-auto mt-1 mb-5">আপনি এখনও কোনো ফাইল আপলোড করেননি অথবা ফিল্টারে মিল পাওয়া যায়নি।</p>
+            <button onclick="triggerUploadModal()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-sm inline-flex items-center gap-2">
+              <i class="fa-solid fa-upload"></i>
+              <span>প্রথম ফাইল আপলোড করুন</span>
+            </button>
+          </div>
+
+          <!-- Files Grid / List View Container -->
+          <div id="filesContainer" class="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <!-- Dynamically populated via JavaScript -->
+          </div>
+
+        </div>
+
+      </main>
+
+      <!-- Footer -->
+      <footer class="mt-auto bg-white border-t border-slate-200 py-6 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-amber-400 to-amber-600 p-0.5 flex items-center justify-center">
+              <div class="w-full h-full bg-[#0a183d] rounded-full flex items-center justify-center text-[10px] text-amber-300 font-black">A</div>
+            </div>
+            <span class="font-bold text-slate-800">Arif All Document</span> — Smart Way to Manage Your Documents
+          </div>
+          <div>
+            ওয়েবসাইট: <a href="https://www.AriffAllDocument.com" target="_blank" class="text-blue-600 hover:underline font-semibold">www.AriffAllDocument.com</a>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+    <!-- ==================== UPLOAD MODAL ==================== -->
+    <div id="uploadModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+      <div class="bg-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-200">
+        
+        <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-sm font-bold">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-900 text-sm">নতুন ডকুমেন্ট বা ফাইল আপলোড</h3>
+              <p class="text-[11px] text-slate-500">PDF, Word, Excel, Images, ZIP, Video সাপোর্ট করে</p>
+            </div>
+          </div>
+          <button onclick="closeUploadModal()" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
+
+        <div class="p-6 space-y-4">
+          <!-- Drag & Drop Zone -->
+          <div id="dropZone" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)" onclick="document.getElementById('hiddenFileInput').click()" class="border-2 border-dashed border-slate-300 hover:border-blue-500 rounded-2xl p-8 text-center cursor-pointer transition-colors bg-slate-50/60 hover:bg-blue-50/30">
+            <input type="file" id="hiddenFileInput" class="hidden" onchange="handleFileSelect(event)" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.zip,.mp4,.mp3,.txt">
+            
+            <div class="w-14 h-14 mx-auto rounded-full bg-blue-100/70 text-blue-600 flex items-center justify-center text-2xl mb-3 shadow-xs">
+              <i class="fa-solid fa-arrow-up-from-bracket"></i>
+            </div>
+            
+            <p class="text-sm font-bold text-slate-800">ফাইল এখানে ড্র্যাগ করে ছাড়ুন অথবা ক্লিক করুন</p>
+            <p class="text-xs text-slate-400 mt-1">সর্বোচ্চ ৫০ এমবি পর্যন্ত ফাইল আপলোড সমর্থিত</p>
+            
+            <div class="flex justify-center items-center gap-2 mt-4 text-[11px] text-slate-500 font-medium">
+              <span class="bg-white px-2 py-0.5 rounded shadow-xs border">PDF</span>
+              <span class="bg-white px-2 py-0.5 rounded shadow-xs border">DOCX</span>
+              <span class="bg-white px-2 py-0.5 rounded shadow-xs border">XLSX</span>
+              <span class="bg-white px-2 py-0.5 rounded shadow-xs border">JPG/PNG</span>
+              <span class="bg-white px-2 py-0.5 rounded shadow-xs border">ZIP</span>
+            </div>
+          </div>
+
+          <!-- Select Folder to save into -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">কোন ফোল্ডারে রাখবেন (Select Folder):</label>
+            <select id="uploadFolderSelect" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-blue-600">
+              <option value="Documents">Documents</option>
+              <option value="Personal Media">Personal Media</option>
+              <option value="Work Project">Work Project</option>
+              <option value="Official Backup">Official Backup</option>
+            </select>
+          </div>
+
+          <!-- Upload Progress indicator -->
+          <div id="uploadProgressContainer" class="hidden space-y-1.5 pt-2">
+            <div class="flex justify-between text-xs font-semibold text-slate-700">
+              <span id="uploadingFileName">আপলোড হচ্ছে...</span>
+              <span id="uploadPercentText">0%</span>
+            </div>
+            <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+              <div id="uploadProgressBar" class="bg-blue-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end gap-2">
+          <button onclick="closeUploadModal()" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-200 rounded-xl transition">
+            বাতিল
+          </button>
+          <button onclick="document.getElementById('hiddenFileInput').click()" class="px-5 py-2 text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-xl shadow-sm transition">
+            ফাইল ব্রাউজ করুন
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ==================== PREVIEW MODAL ==================== -->
+    <div id="previewModal" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+      <div class="bg-white rounded-3xl w-full max-w-4xl max-h-[92vh] flex flex-col overflow-hidden shadow-2xl border border-slate-200">
+        
+        <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+          <div class="flex items-center gap-3 overflow-hidden">
+            <div id="previewModalIcon" class="w-9 h-9 rounded-xl bg-slate-200 text-slate-700 flex items-center justify-center flex-shrink-0 text-lg">
+              <i class="fa-regular fa-file"></i>
+            </div>
+            <div class="truncate">
+              <h3 id="previewModalTitle" class="font-bold text-slate-900 text-sm truncate">Document Preview</h3>
+              <p id="previewModalMeta" class="text-[11px] text-slate-500">2.4 MB • 24 Oct 2026</p>
+            </div>
+          </div>
+          
+          <div class="flex items-center gap-2">
+            <button id="previewModalDownloadBtn" class="px-3 py-1.5 text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-xl flex items-center gap-1.5 shadow-xs">
+              <i class="fa-solid fa-download"></i>
+              <span>Download</span>
+            </button>
+            <button onclick="closePreviewModal()" class="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg text-lg">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex-1 p-4 sm:p-6 overflow-y-auto flex items-center justify-center bg-slate-100" id="previewModalBody">
+          <!-- Content preview (image or simulated document viewer) -->
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ==================== CREATE FOLDER MODAL ==================== -->
+    <div id="folderModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+      <div class="bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl border border-slate-200">
+        <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+          <h3 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+            <i class="fa-solid fa-folder-plus text-amber-500"></i>
+            <span>নতুন ফোল্ডার তৈরি করুন</span>
+          </h3>
+          <button onclick="closeFolderModal()" class="text-slate-400 hover:text-slate-700">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="p-5 space-y-3">
+          <label class="block text-xs font-semibold text-slate-700">ফোল্ডারের নাম (Folder Name)</label>
+          <input type="text" id="newFolderNameInput" placeholder="যেমন: Personal Documents, NID & Passport" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-600">
+        </div>
+        <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end gap-2">
+          <button onclick="closeFolderModal()" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-200 rounded-xl">বাতিল</button>
+          <button onclick="createNewFolder()" class="px-4 py-2 text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-xl">তৈরি করুন</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ==================== PROFILE EDIT MODAL ==================== -->
+    <div id="profileModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+      <div class="bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-200">
+        
+        <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/70">
+          <div class="flex items-center gap-2 text-slate-900 font-bold text-sm">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center">
+              <i class="fa-solid fa-user-pen text-xs"></i>
+            </div>
+            <span>প্রোফাইল পরিবর্তন করুন</span>
+          </div>
+          <button onclick="closeProfileModal()" class="text-slate-400 hover:text-slate-700">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
+
+        <form onsubmit="handleProfileUpdate(event)" class="p-6 space-y-4">
+          <!-- Profile Picture Uploader -->
+          <div class="flex flex-col items-center justify-center mb-2">
+            <div class="relative group cursor-pointer" onclick="document.getElementById('profilePicInput').click()">
+              <div id="editAvatarPreview" class="w-20 h-20 rounded-full bg-gradient-to-tr from-amber-400 to-amber-600 text-white font-black text-2xl flex items-center justify-center shadow-lg border-2 border-amber-300 overflow-hidden">
+                A
+              </div>
+              <div class="absolute inset-0 rounded-full bg-black/40 text-white flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <i class="fa-solid fa-camera text-base"></i>
+                <span class="text-[9px] font-semibold mt-0.5">ছবি দিন</span>
+              </div>
+            </div>
+            <input type="file" id="profilePicInput" accept="image/*" class="hidden" onchange="handleProfilePicChange(event)">
+            <p class="text-[11px] text-slate-400 mt-2 font-medium">ছবি বদলাতে বৃত্তটিতে ট্যাপ বা ক্লিক করুন</p>
+          </div>
+
+          <!-- Name -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">আপনার নাম (Full Name)</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 text-xs">
+                <i class="fa-regular fa-user"></i>
+              </span>
+              <input type="text" id="editProfileName" required class="w-full pl-9 pr-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">ইমেইল এড্রেস (Email Address)</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 text-xs">
+                <i class="fa-regular fa-envelope"></i>
+              </span>
+              <input type="email" id="editProfileEmail" required class="w-full pl-9 pr-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+            </div>
+          </div>
+
+          <div class="pt-2 flex items-center justify-end gap-2">
+            <button type="button" onclick="closeProfileModal()" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl transition">
+              বাতিল
+            </button>
+            <button type="submit" class="px-5 py-2.5 text-xs font-bold bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 rounded-xl shadow-md transition">
+              সেভ করুন (Save Changes)
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+
+    <!-- ==================== TRASH / DELETE MODAL ==================== -->
+    <div id="trashModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+      <div class="bg-white rounded-3xl w-full max-w-2xl max-h-[85vh] flex flex-col overflow-hidden shadow-2xl border border-slate-200">
+        <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+          <div class="flex items-center gap-2 text-rose-600 font-bold text-sm">
+            <i class="fa-solid fa-trash-can"></i>
+            <span class="text-slate-900">রিসাইকেল বিন (Recycle Bin / Trash)</span>
+          </div>
+          <button onclick="closeTrashModal()" class="text-slate-400 hover:text-slate-700">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Bulk Action Bar for Trash -->
+        <div id="trashBatchActionBar" class="p-3 bg-slate-100/90 border-b border-slate-200 flex items-center justify-between gap-3 text-xs">
+          <label class="flex items-center gap-2 font-bold text-slate-700 cursor-pointer select-none">
+            <input type="checkbox" id="trashSelectAll" onchange="toggleTrashSelectAll(this.checked)" class="w-4 h-4 rounded text-blue-600 border-slate-300 focus:ring-blue-500">
+            <span>সব সিলেক্ট করুন (Select All)</span>
+          </label>
+          <div class="flex items-center gap-2">
+            <button onclick="restoreSelectedFromTrash()" class="px-3 py-1.5 font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl transition flex items-center gap-1.5 shadow-xs">
+              <i class="fa-solid fa-rotate-left"></i>
+              <span>সিলেক্ট করা ফাইল রিকভার</span>
+            </button>
+            <button onclick="deleteSelectedPermanentlyPrompt()" class="px-3 py-1.5 font-bold text-white bg-rose-600 hover:bg-rose-700 rounded-xl transition flex items-center gap-1.5 shadow-xs">
+              <i class="fa-regular fa-trash-can"></i>
+              <span>সিলেক্ট করা ফাইল ডিলিট</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="p-4 flex-1 overflow-y-auto" id="trashListContainer">
+          <!-- Trash items -->
+        </div>
+        <div class="p-4 bg-slate-50 border-t border-slate-200 flex justify-between items-center text-xs">
+          <span class="text-slate-500">মুছে ফেলা ফাইলগুলো যেকোনো সময় পুনরুদ্ধার করতে পারবেন।</span>
+          <button onclick="emptyTrashPermanently()" class="px-3 py-1.5 font-semibold text-rose-600 hover:bg-rose-50 rounded-lg">সব পার্মানেন্ট মুছে দিন</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ==================== DELETE CONFIRMATION MODAL ==================== -->
+    <div id="confirmDeleteModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+      <div class="bg-white rounded-3xl w-full max-w-sm overflow-hidden shadow-2xl border border-slate-200 p-6 text-center animate-in fade-in zoom-in-95 duration-200">
+        <div class="w-14 h-14 mx-auto rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-2xl mb-4">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <h3 class="text-base font-bold text-slate-800">আপনি কি নিশ্চিত?</h3>
+        <p class="text-xs text-slate-500 mt-1.5 mb-6" id="confirmDeleteDesc">
+          আপনি কি এই ফাইলটি মুছে ফেলতে চান? এটি রিসাইকেল বিনে চলে যাবে।
+        </p>
+        <div class="flex items-center justify-center gap-3">
+          <button onclick="cancelDeleteConfirm()" class="flex-1 py-2.5 px-4 text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-xl transition">
+            বাতিল (Cancel)
+          </button>
+          <button onclick="proceedDeleteConfirm()" class="flex-1 py-2.5 px-4 text-xs font-semibold text-white bg-rose-600 hover:bg-rose-700 rounded-xl shadow-md transition">
+            হ্যাঁ, ডিলিট করুন (OK)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== FORGOT PASSWORD MODAL ==================== -->
+    <div id="forgotPasswordModal" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-md overflow-hidden shadow-2xl p-6 relative text-white">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center">
+              <i class="fa-solid fa-key"></i>
+            </div>
+            <h3 class="text-sm font-bold text-white">পাসওয়ার্ড রিসেট ও OTP ভেরিফিকেশন</h3>
+          </div>
+          <button onclick="closeForgotModal()" class="text-slate-400 hover:text-white">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
+
+        <div class="space-y-4">
+          <!-- Step 1: Email Input & Send OTP -->
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">নিবন্ধিত ইমেইল এড্রেস</label>
+            <div class="flex gap-2">
+              <input type="email" id="resetEmail" required placeholder="name@example.com" class="flex-1 px-3.5 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white text-xs focus:ring-2 focus:ring-amber-400 focus:outline-none">
+              <button type="button" onclick="sendResetOtp()" id="btnSendOtp" class="px-3.5 py-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs rounded-xl shadow transition active:scale-95 whitespace-nowrap">
+                OTP পাঠান
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: OTP Verification Field (Shown after OTP sent) -->
+          <div id="otpSection" class="hidden space-y-2 p-3 bg-slate-800/60 rounded-2xl border border-slate-700/80">
+            <div class="flex items-center justify-between">
+              <label class="block text-xs font-medium text-amber-300">ইমেইলে পাঠানো ৬ ডিজিটের OTP দিন</label>
+              <button type="button" id="btnResendOtp" onclick="resendResetOtp()" class="text-[11px] text-amber-400 hover:underline font-semibold disabled:text-slate-500 disabled:no-underline">
+                Resend OTP
+              </button>
+            </div>
+            <div class="flex gap-2">
+              <input type="text" id="inputOtp" maxlength="6" placeholder="যেমন: 482910" class="flex-1 px-3.5 py-2 bg-slate-900 border border-slate-700 rounded-xl text-white text-xs tracking-widest text-center font-mono focus:ring-2 focus:ring-amber-400 focus:outline-none">
+              <button type="button" onclick="verifyResetOtp()" id="btnVerifyOtp" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl shadow transition active:scale-95">
+                যাচাই করুন
+              </button>
+            </div>
+            <p id="otpHintText" class="text-[11px] text-slate-400">
+              <i class="fa-solid fa-envelope-circle-check text-emerald-400 mr-1"></i>আপনার ইনবক্স অথবা স্প্যাম (Spam) ফোল্ডার চেক করুন।
+            </p>
+          </div>
+
+          <!-- Step 3: New Password Input (Unlocked after OTP verified) -->
+          <form id="newPasswordSection" onsubmit="handleResetPasswordSubmit(event)" class="hidden space-y-3 pt-2 border-t border-slate-800">
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">নতুন পাসওয়ার্ড (New Password)</label>
+              <input type="password" id="resetNewPass" required minlength="6" placeholder="কমপক্ষে ৬ ডিজিট" class="w-full px-3.5 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white text-xs focus:ring-2 focus:ring-amber-400 focus:outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">পুনরায় নতুন পাসওয়ার্ড লিখুন</label>
+              <input type="password" id="resetConfirmPass" required minlength="6" placeholder="একই পাসওয়ার্ড পুনরায় লিখুন" class="w-full px-3.5 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white text-xs focus:ring-2 focus:ring-amber-400 focus:outline-none">
+            </div>
+
+            <div class="pt-2 flex justify-end gap-2">
+              <button type="button" onclick="closeForgotModal()" class="px-4 py-2 text-xs font-semibold text-slate-400 hover:text-white rounded-xl">বাতিল</button>
+              <button type="submit" class="px-5 py-2 text-xs font-bold bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-xl shadow-md transition">পাসওয়ার্ড নিশ্চিত করুন</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== CUSTOM ALERT / TOAST ==================== -->
+    <div id="toastMessage" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl border border-slate-700 text-xs flex items-center gap-3 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+      <span id="toastIcon" class="text-emerald-400 text-base"><i class="fa-solid fa-circle-check"></i></span>
+      <span id="toastText">Action completed successfully</span>
+    </div>
+
+  </div>
+
+  <!-- ==============================================
+       JAVASCRIPT APPLICATION LOGIC
+       ============================================== -->
+  <script>
+    /* -------------------------------------------------------------
+       STATE MANAGEMENT
+       ------------------------------------------------------------- */
+    const STATE_KEY_FILES = 'arif_document_files_v1';
+    const STATE_KEY_TRASH = 'arif_document_trash_v1';
+    const STATE_KEY_USER = 'arif_document_current_user';
+    const STATE_KEY_USERS_DB = 'arif_document_registered_users';
+    const STATE_KEY_FOLDERS = 'arif_document_folders';
+
+    // Default seed folders
+    const defaultFolders = [
+      { id: 'f1', name: 'Documents', count: 4, color: 'blue' },
+      { id: 'f2', name: 'Personal Media', count: 2, color: 'amber' },
+      { id: 'f3', name: 'Work Project', count: 3, color: 'emerald' },
+      { id: 'f4', name: 'Official Backup', count: 1, color: 'rose' }
+    ];
+
+    // Default sample files for instant usability
+    const defaultFiles = [
+      {
+        id: 'file_1',
+        name: 'National_ID_SmartCard.pdf',
+        size: '1.8 MB',
+        sizeBytes: 1887436,
+        type: 'pdf',
+        folder: 'Documents',
+        uploadedAt: 'Nov 02, 2026',
+        isSample: true,
+        dataUrl: null
+      },
+      {
+        id: 'file_2',
+        name: 'Passport_Copy_Arif.pdf',
+        size: '2.4 MB',
+        sizeBytes: 2516582,
+        type: 'pdf',
+        folder: 'Documents',
+        uploadedAt: 'Oct 28, 2026',
+        isSample: true,
+        dataUrl: null
+      },
+      {
+        id: 'file_3',
+        name: 'Family_Photo_Dhaka.jpg',
+        size: '3.5 MB',
+        sizeBytes: 3670016,
+        type: 'image',
+        folder: 'Personal Media',
+        uploadedAt: 'Oct 25, 2026',
+        isSample: true,
+        dataUrl: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800&auto=format&fit=crop&q=80'
+      },
+      {
+        id: 'file_4',
+        name: 'Annual_Financial_Report_2026.xlsx',
+        size: '840 KB',
+        sizeBytes: 860160,
+        type: 'excel',
+        folder: 'Work Project',
+        uploadedAt: 'Sep 15, 2026',
+        isSample: true,
+        dataUrl: null
+      },
+      {
+        id: 'file_5',
+        name: 'Business_Proposal_Contract.docx',
+        size: '1.2 MB',
+        sizeBytes: 1258291,
+        type: 'word',
+        folder: 'Work Project',
+        uploadedAt: 'Sep 10, 2026',
+        isSample: true,
+        dataUrl: null
+      },
+      {
+        id: 'file_6',
+        name: 'All_Certificates_Compressed.zip',
+        size: '8.4 MB',
+        sizeBytes: 8808038,
+        type: 'archive',
+        folder: 'Official Backup',
+        uploadedAt: 'Aug 12, 2026',
+        isSample: true,
+        dataUrl: null
+      }
+    ];
+
+    // Active in-memory arrays
+    let files = [];
+    let trashFiles = [];
+    let folders = [];
+    let registeredUsers = [];
+    let currentUser = null;
+    let currentFilter = 'all';
+    let currentSearch = '';
+    let viewMode = 'grid'; // 'grid' or 'list'
+    let fileIdPendingDelete = null;
+    let deleteActionType = 'trash'; // 'trash', 'permanent', 'batch_trash', 'batch_permanent'
+    let selectedFileIds = new Set(); // Multi-select tracking
+    let selectedTrashIds = new Set(); // Trash multi-select tracking
+    let generatedOtp = null;
+    let isOtpVerified = false;
+    let otpResendTimer = null;
+    let otpCountdown = 30;
+
+    /* -------------------------------------------------------------
+       INITIALIZATION
+       ------------------------------------------------------------- */
+    window.addEventListener('DOMContentLoaded', () => {
+      loadStorageData();
+      checkAuthStatus();
+      renderFolders();
+      renderFiles();
+      updateStorageWidget();
+    });
+
+    function loadStorageData() {
+      try {
+        // নিবন্ধিত সকল ব্যবহারকারীদের তালিকা লোড করা
+        const storedUsersDB = localStorage.getItem(STATE_KEY_USERS_DB);
+        registeredUsers = storedUsersDB ? JSON.parse(storedUsersDB) : [
+          { name: 'Arif Khan', email: 'arif@document.com', password: 'password123' }
+        ];
+
+        // ডিফল্টভাবে কাউকে স্বয়ংক্রিয় লগইন না রাখা, যাতে শেয়ার করা লিংকে সরাসরি লগইন পেজ আসে
+        const storedUser = localStorage.getItem(STATE_KEY_USER);
+        if (storedUser) {
+          currentUser = JSON.parse(storedUser);
+        } else {
+          currentUser = null;
+        }
+
+        const storedFiles = localStorage.getItem(STATE_KEY_FILES);
+        files = storedFiles ? JSON.parse(storedFiles) : [...defaultFiles];
+
+        const storedTrash = localStorage.getItem(STATE_KEY_TRASH);
+        trashFiles = storedTrash ? JSON.parse(storedTrash) : [];
+
+        const storedFolders = localStorage.getItem(STATE_KEY_FOLDERS);
+        folders = storedFolders ? JSON.parse(storedFolders) : [...defaultFolders];
+
+      } catch (e) {
+        console.error('Storage reading error, falling back to defaults:', e);
+        files = [...defaultFiles];
+        trashFiles = [];
+        folders = [...defaultFolders];
+        registeredUsers = [];
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STATE_KEY_FILES, JSON.stringify(files));
+        localStorage.setItem(STATE_KEY_TRASH, JSON.stringify(trashFiles));
+        localStorage.setItem(STATE_KEY_FOLDERS, JSON.stringify(folders));
+        localStorage.setItem(STATE_KEY_USERS_DB, JSON.stringify(registeredUsers));
+        if (currentUser) {
+          localStorage.setItem(STATE_KEY_USER, JSON.stringify(currentUser));
+        } else {
+          localStorage.removeItem(STATE_KEY_USER);
+        }
+      } catch (err) {
+        console.warn('LocalStorage limit reached or disabled. Data lives in memory:', err);
+      }
+    }
+
+    /* -------------------------------------------------------------
+       FORGOT PASSWORD & EMAIL OTP LOGIC
+       ------------------------------------------------------------- */
+    function openForgotModal() {
+      generatedOtp = null;
+      isOtpVerified = false;
+      if (otpResendTimer) clearInterval(otpResendTimer);
+      
+      document.getElementById('resetEmail').value = document.getElementById('loginEmail').value || '';
+      document.getElementById('resetEmail').disabled = false;
+      document.getElementById('btnSendOtp').disabled = false;
+      document.getElementById('btnSendOtp').innerText = 'OTP পাঠান';
+      document.getElementById('inputOtp').value = '';
+      document.getElementById('inputOtp').disabled = false;
+      document.getElementById('btnVerifyOtp').disabled = false;
+      document.getElementById('btnVerifyOtp').className = "px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl shadow transition active:scale-95";
+      document.getElementById('btnVerifyOtp').innerText = 'যাচাই করুন';
+      document.getElementById('resetNewPass').value = '';
+      document.getElementById('resetConfirmPass').value = '';
+      document.getElementById('otpSection').classList.add('hidden');
+      document.getElementById('newPasswordSection').classList.add('hidden');
+      document.getElementById('forgotPasswordModal').classList.remove('hidden');
+    }
+
+    function closeForgotModal() {
+      if (otpResendTimer) clearInterval(otpResendTimer);
+      document.getElementById('forgotPasswordModal').classList.add('hidden');
+    }
+
+    function startResendCooldown() {
+      const resendBtn = document.getElementById('btnResendOtp');
+      if (!resendBtn) return;
+      resendBtn.disabled = true;
+      otpCountdown = 30;
+      resendBtn.innerText = `পুনরায় পাঠান (${otpCountdown}s)`;
+      
+      if (otpResendTimer) clearInterval(otpResendTimer);
+      otpResendTimer = setInterval(() => {
+        otpCountdown--;
+        if (otpCountdown <= 0) {
+          clearInterval(otpResendTimer);
+          resendBtn.disabled = false;
+          resendBtn.innerText = 'Resend OTP';
+        } else {
+          resendBtn.innerText = `পুনরায় পাঠান (${otpCountdown}s)`;
+        }
+      }, 1000);
+    }
+
+    function resendResetOtp() {
+      if (isOtpVerified) return;
+      sendResetOtp(true);
+    }
+
+    function sendResetOtp(isResend = false) {
+      const email = document.getElementById('resetEmail').value.trim();
+      if (!email || !email.includes('@')) {
+        showCustomToast('অনুগ্রহ করে সঠিক ইমেইল এড্রেস লিখুন', 'rose');
+        return;
+      }
+
+      // Generate 6-digit secure numeric OTP
+      generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
+      isOtpVerified = false;
+
+      const btn = document.getElementById('btnSendOtp');
+      btn.disabled = true;
+      btn.innerText = 'পাঠানো হচ্ছে...';
+
+      const emailParams = {
+        to_email: email,
+        otp_code: generatedOtp,
+        user_name: (currentUser && currentUser.name) ? currentUser.name : 'ব্যবহারকারী'
+      };
+
+      if (window.emailjs && window.emailjs.send) {
+        emailjs.send('default_service', 'template_otp', emailParams)
+          .then(function(response) {
+            console.log('Email sent successfully!', response.status, response.text);
+          }, function(error) {
+            console.warn('EmailJS fallback:', error);
+          });
+      }
+
+      document.getElementById('resetEmail').disabled = true;
+      btn.innerText = 'OTP পাঠানো হয়েছে';
+      document.getElementById('otpSection').classList.remove('hidden');
+      document.getElementById('newPasswordSection').classList.add('hidden');
+      document.getElementById('inputOtp').focus();
+
+      startResendCooldown();
+
+      showCustomToast(isResend 
+        ? `নতুন OTP আপনার ইমেইলে (${email}) পুনরায় পাঠানো হয়েছে!` 
+        : `OTP আপনার ইমেইলে (${email}) পাঠানো হয়েছে! ইনবক্স চেক করুন।`, 'info');
+    }
+
+    function verifyResetOtp() {
+      const enteredOtp = document.getElementById('inputOtp').value.trim();
+      if (!enteredOtp) {
+        showCustomToast('অনুগ্রহ করে ৬ ডিজিটের OTP লিখুন', 'rose');
+        return;
+      }
+
+      if (enteredOtp !== generatedOtp) {
+        showCustomToast('ভুল OTP কোড! পুনরায় চেষ্টা করুন।', 'rose');
+        return;
+      }
+
+      isOtpVerified = true;
+      document.getElementById('inputOtp').disabled = true;
+      document.getElementById('btnVerifyOtp').disabled = true;
+      document.getElementById('btnVerifyOtp').className = "px-4 py-2 bg-emerald-600 text-white font-bold text-xs rounded-xl shadow cursor-default";
+      document.getElementById('btnVerifyOtp').innerHTML = '<i class="fa-solid fa-check"></i> ভেরিফাইড';
+      
+      // Unlock new password form
+      document.getElementById('newPasswordSection').classList.remove('hidden');
+      document.getElementById('resetNewPass').focus();
+      showCustomToast('ইমেইল OTP সফলভাবে যাচাই হয়েছে! এবার নতুন পাসওয়ার্ড দিন।', 'success');
+    }
+
+    function handleResetPasswordSubmit(e) {
+      e.preventDefault();
+      if (!isOtpVerified) {
+        showCustomToast('প্রথমে ইমেইল OTP যাচাই করুন!', 'rose');
+        return;
+      }
+
+      const email = document.getElementById('resetEmail').value.trim().toLowerCase();
+      const newPass = document.getElementById('resetNewPass').value;
+      const confirmPass = document.getElementById('resetConfirmPass').value;
+
+      if (newPass !== confirmPass) {
+        showCustomToast('নতুন পাসওয়ার্ড দুটি মিলছে না!', 'rose');
+        return;
+      }
+
+      // নিবন্ধিত ব্যবহারকারী তালিকায় পাসওয়ার্ড আপডেট
+      const userIdx = registeredUsers.findIndex(u => u.email.toLowerCase() === email);
+      if (userIdx !== -1) {
+        registeredUsers[userIdx].password = newPass;
+      } else {
+        registeredUsers.push({ name: 'Arif Khan', email: email, password: newPass });
+      }
+
+      closeForgotModal();
+      document.getElementById('loginEmail').value = email;
+      document.getElementById('loginPassword').value = newPass;
+      saveState();
+      showCustomToast('পাসওয়ার্ড সফলভাবে পরিবর্তন করা হয়েছে! এখন লগইন করুন।', 'success');
+    }
+
+    /* -------------------------------------------------------------
+       UPLOAD LOGIC (Drag & Drop + File Selector)
+       ------------------------------------------------------------- */
+    function triggerUploadModal() {
+      document.getElementById('uploadProgressContainer').classList.add('hidden');
+      document.getElementById('uploadModal').classList.remove('hidden');
+    }
+
+    function closeUploadModal() {
+      document.getElementById('uploadModal').classList.add('hidden');
+    }
+
+    function handleDragOver(e) {
+      e.preventDefault();
+      document.getElementById('dropZone').classList.add('border-blue-500', 'bg-blue-50/40');
+    }
+
+    function handleDragLeave(e) {
+      e.preventDefault();
+      document.getElementById('dropZone').classList.remove('border-blue-500', 'bg-blue-50/40');
+    }
+
+    function handleDrop(e) {
+      e.preventDefault();
+      document.getElementById('dropZone').classList.remove('border-blue-500', 'bg-blue-50/40');
+      if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        processUploadedFiles(e.dataTransfer.files);
+      }
+    }
+
+    function handleFileSelect(e) {
+      if (e.target.files && e.target.files.length > 0) {
+        processUploadedFiles(e.target.files);
+      }
+    }
+
+    function detectFileType(name) {
+      const ext = name.split('.').pop().toLowerCase();
+      if (['pdf'].includes(ext)) return 'pdf';
+      if (['png', 'jpg', 'jpeg', 'webp', 'gif', 'svg'].includes(ext)) return 'image';
+      if (['doc', 'docx', 'txt', 'rtf'].includes(ext)) return 'word';
+      if (['xls', 'xlsx', 'csv'].includes(ext)) return 'excel';
+      if (['zip', 'rar', '7z', 'tar', 'gz'].includes(ext)) return 'archive';
+      if (['mp4', 'mkv', 'avi', 'mov', 'webm'].includes(ext)) return 'video';
+      return 'document';
+    }
+
+    function formatFileSize(bytes) {
+      if (!bytes || bytes === 0) return '0 B';
+      const k = 1024;
+      const sizes = ['B', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+    }
+
+    /* -------------------------------------------------------------
+       AUTH LOGIC & TAB SWITCHING
+       ------------------------------------------------------------- */
+    function checkAuthStatus() {
+      const authView = document.getElementById('authView');
+      const mainDashboard = document.getElementById('mainDashboardView');
+
+      if (currentUser && currentUser.loggedIn) {
+        authView.classList.add('hidden');
+        mainDashboard.classList.remove('hidden');
+        updateUserProfileDisplay();
+      } else {
+        authView.classList.remove('hidden');
+        mainDashboard.classList.add('hidden');
+      }
+    }
+
+    function switchAuthTab(tab) {
+      const tabLogin = document.getElementById('tabLogin');
+      const tabRegister = document.getElementById('tabRegister');
+      const loginForm = document.getElementById('loginForm');
+      const registerForm = document.getElementById('registerForm');
+
+      if (tab === 'login') {
+        tabLogin.className = 'flex-1 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md transition-all';
+        tabRegister.className = 'flex-1 py-2 text-sm font-semibold rounded-lg text-slate-300 hover:text-white transition-all';
+        loginForm.classList.remove('hidden');
+        registerForm.classList.add('hidden');
+      } else {
+        tabRegister.className = 'flex-1 py-2 text-sm font-semibold rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md transition-all';
+        tabLogin.className = 'flex-1 py-2 text-sm font-semibold rounded-lg text-slate-300 hover:text-white transition-all';
+        registerForm.classList.remove('hidden');
+        loginForm.classList.add('hidden');
+      }
+    }
+
+    function handleAuthLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+      const pass = document.getElementById('loginPassword').value;
+
+      if (!email || !pass) {
+        showCustomToast('ইমেইল ও পাসওয়ার্ড প্রদান করুন!', 'rose');
+        return;
+      }
+
+      // নিবন্ধিত ব্যবহারকারী চেক
+      const matchedUser = registeredUsers.find(u => u.email.toLowerCase() === email);
+
+      if (matchedUser) {
+        if (matchedUser.password && matchedUser.password !== pass) {
+          showCustomToast('ভুল পাসওয়ার্ড! পুনরায় চেষ্টা করুন।', 'rose');
+          return;
+        }
+        currentUser = {
+          name: matchedUser.name || 'User',
+          email: matchedUser.email,
+          avatar: matchedUser.avatar || null,
+          loggedIn: true
+        };
+      } else {
+        // যদি এখনও রেজিস্টার করা না থাকে
+        currentUser = {
+          name: email.split('@')[0],
+          email: email,
+          avatar: null,
+          loggedIn: true
+        };
+        registeredUsers.push({
+          name: currentUser.name,
+          email: email,
+          password: pass
+        });
+      }
+
+      saveState();
+      checkAuthStatus();
+      renderFolders();
+      renderFiles();
+      updateStorageWidget();
+      showCustomToast('সফলভাবে লগইন হয়েছে!', 'success');
+    }
+
+    function handleAuthRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim().toLowerCase();
+      const pass = document.getElementById('regPassword').value;
+      const confirmPass = document.getElementById('regPasswordConfirm').value;
+
+      if (!email || !pass) {
+        showCustomToast('সমস্ত প্রয়োজনীয় তথ্য পূরণ করুন!', 'rose');
+        return;
+      }
+
+      // একবার যে ইমেইল দিয়ে ক্রিয়েট করা হবে, দ্বিতীয়বার যেন আর ক্রিয়েট না হয়
+      const isAlreadyRegistered = registeredUsers.some(u => u.email.toLowerCase() === email);
+      if (isAlreadyRegistered) {
+        showCustomToast('এই ইমেইল দিয়ে ইতিমধ্যে একটি অ্যাকাউন্ট তৈরি করা হয়েছে! অনুগ্রহ করে লগইন করুন।', 'rose');
+        switchAuthTab('login');
+        document.getElementById('loginEmail').value = email;
+        return;
+      }
+
+      if (pass !== confirmPass) {
+        showCustomToast('পাসওয়ার্ড দুটি মিলছে না!', 'rose');
+        return;
+      }
+
+      // নতুন অ্যাকাউন্ট যুক্ত করা
+      const newUser = {
+        name: name || email.split('@')[0],
+        email: email,
+        password: pass,
+        avatar: null
+      };
+
+      registeredUsers.push(newUser);
+
+      currentUser = {
+        name: newUser.name,
+        email: newUser.email,
+        avatar: null,
+        loggedIn: true
+      };
+
+      saveState();
+      checkAuthStatus();
+      renderFolders();
+      renderFiles();
+      updateStorageWidget();
+      showCustomToast('অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!', 'success');
+    }
+
+    function handleLogout() {
+      if (currentUser) {
+        currentUser = null;
+        localStorage.removeItem(STATE_KEY_USER);
+      }
+      checkAuthStatus();
+      showCustomToast('সফলভাবে লগআউট হয়েছে', 'info');
+    }
+
+    function updateUserProfileDisplay() {
+      if (!currentUser) return;
+      const name = currentUser.name || 'Arif Khan';
+      const email = currentUser.email || 'arif@document.com';
+      const initial = name.charAt(0).toUpperCase();
+
+      const userNameLabel = document.getElementById('userNameLabel');
+      const userEmailLabel = document.getElementById('userEmailLabel');
+      const bannerUserName = document.getElementById('bannerUserName');
+      const userAvatar = document.getElementById('userAvatar');
+      const editAvatarPreview = document.getElementById('editAvatarPreview');
+
+      if (userNameLabel) userNameLabel.innerText = name;
+      if (userEmailLabel) userEmailLabel.innerText = email;
+      if (bannerUserName) bannerUserName.innerText = name;
+
+      if (userAvatar) {
+        if (currentUser.avatar) {
+          userAvatar.parentElement.innerHTML = `<img src="${currentUser.avatar}" alt="Avatar" class="w-full h-full object-cover">`;
+        } else {
+          userAvatar.innerText = initial;
+        }
+      }
+
+      if (editAvatarPreview) {
+        if (currentUser.avatar) {
+          editAvatarPreview.innerHTML = `<img src="${currentUser.avatar}" alt="Avatar" class="w-full h-full object-cover">`;
+        } else {
+          editAvatarPreview.innerText = initial;
+        }
+      }
+    }
+
+    /* -------------------------------------------------------------
+       PROFILE MODAL
+       ------------------------------------------------------------- */
+    function openProfileModal() {
+      if (!currentUser) return;
+      document.getElementById('editProfileName').value = currentUser.name || 'Arif Khan';
+      document.getElementById('editProfileEmail').value = currentUser.email || 'arif@document.com';
+      document.getElementById('profileModal').classList.remove('hidden');
+    }
+
+    function closeProfileModal() {
+      document.getElementById('profileModal').classList.add('hidden');
+    }
+
+    function handleProfilePicChange(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        if (!currentUser) currentUser = {};
+        currentUser.avatar = evt.target.result;
+        updateUserProfileDisplay();
+        showCustomToast('প্রোফাইল ছবি প্রিভিউ আপডেট হয়েছে', 'info');
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handleProfileUpdate(e) {
+      e.preventDefault();
+      const newName = document.getElementById('editProfileName').value.trim();
+      const newEmail = document.getElementById('editProfileEmail').value.trim();
+
+      if (!newName || !newEmail) {
+        showCustomToast('নাম ও ইমেইল আবশ্যক!', 'rose');
+        return;
+      }
+
+      currentUser.name = newName;
+      currentUser.email = newEmail;
+      saveState();
+      updateUserProfileDisplay();
+      closeProfileModal();
+      showCustomToast('প্রোফাইল তথ্য সফলভাবে সেভ হয়েছে!', 'success');
+    }
+
+    /* -------------------------------------------------------------
+       FOLDERS & CATEGORIES
+       ------------------------------------------------------------- */
+    function renderFolders() {
+      const container = document.getElementById('foldersContainer');
+      const uploadSelect = document.getElementById('uploadFolderSelect');
+      const bulkSelect = document.getElementById('bulkMoveFolderSelect');
+      const statFolderCount = document.getElementById('statFolderCount');
+
+      if (statFolderCount) {
+        statFolderCount.innerText = `${folders.length}টি ফোল্ডার প্রস্তুত`;
+      }
+
+      // Populate upload and move dropdowns
+      if (uploadSelect) {
+        uploadSelect.innerHTML = folders.map(f => `<option value="${escapeHtml(f.name)}">${escapeHtml(f.name)}</option>`).join('');
+      }
+      if (bulkSelect) {
+        bulkSelect.innerHTML = folders.map(f => `<option value="${escapeHtml(f.name)}">${escapeHtml(f.name)}</option>`).join('');
+      }
+
+      if (!container) return;
+
+      container.innerHTML = folders.map(folder => {
+        const fileCount = files.filter(f => f.folder === folder.name).length;
+        const colorClasses = {
+          blue: { bg: 'bg-blue-50', text: 'text-blue-600', border: 'border-blue-100' },
+          amber: { bg: 'bg-amber-50', text: 'text-amber-600', border: 'border-amber-100' },
+          emerald: { bg: 'bg-emerald-50', text: 'text-emerald-600', border: 'border-emerald-100' },
+          rose: { bg: 'bg-rose-50', text: 'text-rose-600', border: 'border-rose-100' },
+        }[folder.color || 'blue'] || { bg: 'bg-slate-50', text: 'text-slate-600', border: 'border-slate-100' };
+
+        return `
+          <div onclick="filterByFolder('${escapeHtml(folder.name)}')" class="p-3.5 rounded-2xl border ${colorClasses.border} ${colorClasses.bg} cursor-pointer hover:shadow-sm transition-all group flex items-center justify-between">
+            <div class="flex items-center gap-2.5 overflow-hidden">
+              <i class="fa-solid fa-folder ${colorClasses.text} text-lg group-hover:scale-110 transition-transform"></i>
+              <div class="truncate">
+                <h4 class="font-bold text-xs text-slate-800 truncate">${escapeHtml(folder.name)}</h4>
+                <span class="text-[10px] text-slate-500">${fileCount}টি ফাইল</span>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function openFolderModal() {
+      document.getElementById('newFolderNameInput').value = '';
+      document.getElementById('folderModal').classList.remove('hidden');
+    }
+
+    function closeFolderModal() {
+      document.getElementById('folderModal').classList.add('hidden');
+    }
+
+    function createNewFolder() {
+      const input = document.getElementById('newFolderNameInput');
+      const name = input.value.trim();
+      if (!name) {
+        showCustomToast('ফোল্ডারের নাম দিন', 'rose');
+        return;
+      }
+
+      if (folders.some(f => f.name.toLowerCase() === name.toLowerCase())) {
+        showCustomToast('এই নামের ফোল্ডার ইতিমধ্যে আছে!', 'rose');
+        return;
+      }
+
+      const colors = ['blue', 'amber', 'emerald', 'rose'];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+      folders.push({
+        id: 'folder_' + Date.now(),
+        name: name,
+        color: randomColor
+      });
+
+      saveState();
+      renderFolders();
+      closeFolderModal();
+      showCustomToast(`'${name}' ফোল্ডার তৈরি হয়েছে`, 'success');
+    }
+
+    function filterByFolder(folderName) {
+      currentFilter = 'folder:' + folderName;
+      document.getElementById('fileSectionTitle').innerText = `${folderName} ফোল্ডারের ফাইলসমূহ`;
+      renderFiles();
+    }
+
+    /* -------------------------------------------------------------
+       FILE RENDERING, FILTERING & VIEW MODES
+       ------------------------------------------------------------- */
+    function filterFiles(category) {
+      currentFilter = category;
+      const title = document.getElementById('fileSectionTitle');
+      
+      const titles = {
+        all: 'All Files (সকল ডকুমেন্টস)',
+        pdf: 'PDF ডকুমেন্টস',
+        image: 'ছবি ও ফটো গ্যালারি',
+        word: 'Word ও টেক্সট ডকুমেন্টস',
+        excel: 'Excel স্প্রেডশিট',
+        archive: 'ZIP ও আর্কাইভ মিডিয়া'
+      };
+      if (title) title.innerText = titles[category] || 'ফাইলসমূহ';
+
+      document.querySelectorAll('.category-btn').forEach(btn => {
+        if (btn.getAttribute('data-category') === category) {
+          btn.className = 'category-btn active px-3 py-1.5 rounded-xl font-medium transition bg-slate-900 text-white';
+        } else {
+          btn.className = 'category-btn px-3 py-1.5 rounded-xl font-medium transition text-slate-600 hover:bg-slate-100';
+        }
+      });
+
+      renderFiles();
+    }
+
+    function handleSearch(term) {
+      currentSearch = (term || '').toLowerCase().trim();
+      renderFiles();
+    }
+
+    function setViewMode(mode) {
+      viewMode = mode;
+      const gridBtn = document.getElementById('gridToggleBtn');
+      const listBtn = document.getElementById('listToggleBtn');
+
+      if (mode === 'grid') {
+        gridBtn.className = 'p-1.5 text-blue-600 hover:bg-slate-100 rounded-lg';
+        listBtn.className = 'p-1.5 text-slate-400 hover:bg-slate-100 rounded-lg';
+      } else {
+        listBtn.className = 'p-1.5 text-blue-600 hover:bg-slate-100 rounded-lg';
+        gridBtn.className = 'p-1.5 text-slate-400 hover:bg-slate-100 rounded-lg';
+      }
+
+      renderFiles();
+    }
+
+    function getFileTypeBadge(type) {
+      switch (type) {
+        case 'pdf':
+          return { label: 'PDF', icon: 'fa-regular fa-file-pdf', color: 'bg-rose-50 text-rose-600 border-rose-200' };
+        case 'image':
+          return { label: 'IMG', icon: 'fa-regular fa-image', color: 'bg-blue-50 text-blue-600 border-blue-200' };
+        case 'word':
+          return { label: 'DOC', icon: 'fa-regular fa-file-word', color: 'bg-sky-50 text-sky-600 border-sky-200' };
+        case 'excel':
+          return { label: 'XLS', icon: 'fa-regular fa-file-excel', color: 'bg-emerald-50 text-emerald-600 border-emerald-200' };
+        case 'archive':
+          return { label: 'ZIP', icon: 'fa-solid fa-file-zipper', color: 'bg-amber-50 text-amber-600 border-amber-200' };
+        case 'video':
+          return { label: 'VID', icon: 'fa-regular fa-file-video', color: 'bg-purple-50 text-purple-600 border-purple-200' };
+        default:
+          return { label: 'DOC', icon: 'fa-regular fa-file', color: 'bg-slate-50 text-slate-600 border-slate-200' };
+      }
+    }
+
+    function renderFiles() {
+      const container = document.getElementById('filesContainer');
+      const emptyState = document.getElementById('emptyFilesState');
+      const statAllFiles = document.getElementById('statAllFilesCount');
+      const statTrashCount = document.getElementById('statTrashCount');
+
+      if (statAllFiles) statAllFiles.innerText = `${files.length} টি ফাইল সংরক্ষিত`;
+      if (statTrashCount) statTrashCount.innerText = `${trashFiles.length}টি ডিলিট ফাইল`;
+
+      let filtered = [...files];
+
+      // Category / Folder filter
+      if (currentFilter.startsWith('folder:')) {
+        const folderName = currentFilter.replace('folder:', '');
+        filtered = filtered.filter(f => f.folder === folderName);
+      } else if (currentFilter !== 'all') {
+        filtered = filtered.filter(f => f.type === currentFilter);
+      }
+
+      // Search filter
+      if (currentSearch) {
+        filtered = filtered.filter(f =>
+          f.name.toLowerCase().includes(currentSearch) ||
+          (f.folder && f.folder.toLowerCase().includes(currentSearch))
+        );
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        updateBatchActionBar();
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+
+      if (viewMode === 'grid') {
+        container.className = 'mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4';
+        container.innerHTML = filtered.map(file => {
+          const badge = getFileTypeBadge(file.type);
+          const isChecked = selectedFileIds.has(file.id);
+
+          return `
+            <div class="glow-card border border-slate-200/90 rounded-2xl p-4 flex flex-col justify-between transition group relative ${isChecked ? 'ring-2 ring-blue-500 bg-blue-50/20' : ''}">
+              
+              <!-- Checkbox & Top Header -->
+              <div class="flex items-center justify-between mb-3">
+                <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleSelectFile('${file.id}', this.checked)" class="w-4 h-4 rounded text-blue-600 border-slate-300 focus:ring-blue-500 cursor-pointer">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded border ${badge.color}">${badge.label}</span>
+                  <button onclick="renameFilePrompt('${file.id}')" title="রিনেম" class="text-slate-400 hover:text-slate-700 p-1">
+                    <i class="fa-solid fa-pen text-[10px]"></i>
+                  </button>
+                  <button onclick="deleteFile('${file.id}')" title="ডিলিট" class="text-slate-400 hover:text-rose-600 p-1">
+                    <i class="fa-regular fa-trash-can text-xs"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Main Thumbnail/Icon Area (Click to Preview) -->
+              <div onclick="previewFile('${file.id}')" class="h-28 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center cursor-pointer overflow-hidden group-hover:border-blue-200 transition">
+                ${file.type === 'image' && file.dataUrl
+                  ? `<img src="${file.dataUrl}" alt="${escapeHtml(file.name)}" class="w-full h-full object-cover">`
+                  : `<i class="${badge.icon} text-3xl ${badge.color.split(' ')[1]}"></i>`
+                }
+              </div>
+
+              <!-- Info & Actions -->
+              <div class="mt-3">
+                <h4 onclick="previewFile('${file.id}')" title="${escapeHtml(file.name)}" class="font-bold text-xs text-slate-800 truncate cursor-pointer hover:text-blue-600 transition">
+                  ${escapeHtml(file.name)}
+                </h4>
+                <div class="flex items-center justify-between text-[11px] text-slate-400 mt-1">
+                  <span>${file.size}</span>
+                  <span class="truncate max-w-[90px] font-medium text-slate-500">${file.folder || 'Default'}</span>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center gap-2">
+                <button onclick="previewFile('${file.id}')" class="flex-1 py-1.5 text-[11px] font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 rounded-lg transition text-center">
+                  <i class="fa-regular fa-eye mr-1"></i> প্রিভিউ
+                </button>
+                <button onclick="downloadFile('${file.id}')" title="ডাউনলোড" class="px-2.5 py-1.5 text-[11px] font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition">
+                  <i class="fa-solid fa-download"></i>
+                </button>
+              </div>
+
+            </div>
+          `;
+        }).join('');
+      } else {
+        // List View Mode
+        container.className = 'mt-5 flex flex-col space-y-2';
+        container.innerHTML = filtered.map(file => {
+          const badge = getFileTypeBadge(file.type);
+          const isChecked = selectedFileIds.has(file.id);
+
+          return `
+            <div class="p-3 bg-white border border-slate-200/90 rounded-xl flex items-center justify-between gap-3 hover:bg-slate-50 transition text-xs ${isChecked ? 'ring-2 ring-blue-500 bg-blue-50/20' : ''}">
+              <div class="flex items-center gap-3 overflow-hidden">
+                <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleSelectFile('${file.id}', this.checked)" class="w-4 h-4 rounded text-blue-600 border-slate-300 focus:ring-blue-500 cursor-pointer">
+                <div onclick="previewFile('${file.id}')" class="w-8 h-8 rounded-lg ${badge.color} border flex items-center justify-center flex-shrink-0 cursor-pointer">
+                  <i class="${badge.icon}"></i>
+                </div>
+                <div onclick="previewFile('${file.id}')" class="truncate cursor-pointer">
+                  <h4 class="font-bold text-slate-800 truncate">${escapeHtml(file.name)}</h4>
+                  <div class="text-[10px] text-slate-400 flex items-center gap-2">
+                    <span>${file.size}</span>
+                    <span>•</span>
+                    <span>${file.folder || 'Folder'}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2">
+                <button onclick="previewFile('${file.id}')" class="p-1.5 text-blue-600 hover:bg-blue-50 rounded-lg" title="প্রিভিউ">
+                  <i class="fa-regular fa-eye"></i>
+                </button>
+                <button onclick="downloadFile('${file.id}')" class="p-1.5 text-slate-600 hover:bg-slate-100 rounded-lg" title="ডাউনলোড">
+                  <i class="fa-solid fa-download"></i>
+                </button>
+                <button onclick="renameFilePrompt('${file.id}')" class="p-1.5 text-slate-500 hover:bg-slate-100 rounded-lg" title="রিনেম">
+                  <i class="fa-solid fa-pen text-[10px]"></i>
+                </button>
+                <button onclick="deleteFile('${file.id}')" class="p-1.5 text-rose-500 hover:bg-rose-50 rounded-lg" title="ডিলিট">
+                  <i class="fa-regular fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      updateBatchActionBar();
+    }
+
+    /* -------------------------------------------------------------
+       BATCH / BULK ACTIONS (SELECT, MOVE, DELETE)
+       ------------------------------------------------------------- */
+    function toggleSelectFile(id, isChecked) {
+      if (isChecked) {
+        selectedFileIds.add(id);
+      } else {
+        selectedFileIds.delete(id);
+      }
+      updateBatchActionBar();
+    }
+
+    function toggleSelectAll(isChecked) {
+      if (isChecked) {
+        files.forEach(f => selectedFileIds.add(f.id));
+      } else {
+        selectedFileIds.clear();
+      }
+      renderFiles();
+    }
+
+    function updateBatchActionBar() {
+      const selectAll = document.getElementById('selectAllCheckbox');
+      const selectedCountText = document.getElementById('selectedCountText');
+
+      const count = selectedFileIds.size;
+      if (selectedCountText) {
+        selectedCountText.innerText = `${count} নির্বাচিত`;
+      }
+
+      if (selectAll) {
+        selectAll.checked = files.length > 0 && count === files.length;
+      }
+    }
+
+    function executeBatchMove() {
+      if (selectedFileIds.size === 0) {
+        showCustomToast('প্রথমে অন্তত একটি ফাইল সিলেক্ট করুন!', 'rose');
+        return;
+      }
+
+      const targetFolder = document.getElementById('bulkMoveFolderSelect').value;
+      if (!targetFolder) {
+        showCustomToast('একটি ফোল্ডার বেছে নিন!', 'rose');
+        return;
+      }
+
+      files.forEach(f => {
+        if (selectedFileIds.has(f.id)) {
+          f.folder = targetFolder;
+        }
+      });
+
+      const count = selectedFileIds.size;
+      selectedFileIds.clear();
+      saveState();
+      renderFolders();
+      renderFiles();
+      showCustomToast(`${count}টি ফাইল '${targetFolder}' ফোল্ডারে সরানো হয়েছে`, 'success');
+    }
+
+    function executeBatchDelete() {
+      if (selectedFileIds.size === 0) {
+        showCustomToast('প্রথমে অন্তত একটি ফাইল সিলেক্ট করুন!', 'rose');
+        return;
+      }
+
+      const count = selectedFileIds.size;
+      deleteActionType = 'batch_trash';
+      
+      const modal = document.getElementById('confirmDeleteModal');
+      const desc = document.getElementById('confirmDeleteDesc');
+      desc.innerHTML = `আপনি কি নির্বাচিত <span class="font-bold text-rose-600">${count}টি</span> ফাইল একসাথে মুছে ফেলতে চান? ফাইলগুলো রিসাইকেল বিনে জমা হবে।`;
+      modal.classList.remove('hidden');
+    }
+
+    function processUploadedFiles(fileList) {
+      const progressContainer = document.getElementById('uploadProgressContainer');
+      const progressBar = document.getElementById('uploadProgressBar');
+      const progressText = document.getElementById('uploadPercentText');
+      const progressName = document.getElementById('uploadingFileName');
+      const selectedFolder = document.getElementById('uploadFolderSelect').value || 'Documents';
+
+      progressContainer.classList.remove('hidden');
+
+      let uploadedCount = 0;
+      const totalFiles = fileList.length;
+
+      Array.from(fileList).forEach((file, index) => {
+        progressName.innerText = `আপলোড হচ্ছে: ${file.name}`;
+        
+        // Read file using FileReader
+        const reader = new FileReader();
+        const fileType = detectFileType(file.name);
+
+        reader.onload = function(evt) {
+          const fileDataUrl = evt.target.result;
+          
+          const newDoc = {
+            id: 'file_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+            name: file.name,
+            size: formatFileSize(file.size),
+            sizeBytes: file.size,
+            type: fileType,
+            folder: selectedFolder,
+            uploadedAt: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+            dataUrl: fileType === 'image' || file.size < 2000000 ? fileDataUrl : null,
+            isSample: false
+          };
+
+          files.unshift(newDoc);
+          uploadedCount++;
+
+          const percent = Math.round((uploadedCount / totalFiles) * 100);
+          progressBar.style.width = percent + '%';
+          progressText.innerText = percent + '%';
+
+          if (uploadedCount === totalFiles) {
+            setTimeout(() => {
+              saveState();
+              renderFiles();
+              renderFolders();
+              updateStorageWidget();
+              closeUploadModal();
+              showCustomToast(`${totalFiles}টি ফাইল সফলভাবে আপলোড হয়েছে!`, 'success');
+            }, 600);
+          }
+        };
+
+        if (fileType === 'image' || file.size < 2000000) {
+          reader.readAsDataURL(file);
+        } else {
+          // Large files save meta representation
+          setTimeout(() => {
+            const newDoc = {
+              id: 'file_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+              name: file.name,
+              size: formatFileSize(file.size),
+              sizeBytes: file.size,
+              type: fileType,
+              folder: selectedFolder,
+              uploadedAt: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+              dataUrl: null,
+              isSample: false
+            };
+            files.unshift(newDoc);
+            uploadedCount++;
+            if (uploadedCount === totalFiles) {
+              saveState();
+              renderFiles();
+              renderFolders();
+              updateStorageWidget();
+              closeUploadModal();
+              showCustomToast(`${totalFiles}টি ফাইল আপলোড হয়েছে`, 'success');
+            }
+          }, 300);
+        }
+      });
+    }
+
+    /* -------------------------------------------------------------
+       PREVIEW & DOWNLOAD ACTIONS
+       ------------------------------------------------------------- */
+    function previewFile(id) {
+      const file = files.find(f => f.id === id);
+      if (!file) return;
+
+      const modal = document.getElementById('previewModal');
+      const title = document.getElementById('previewModalTitle');
+      const meta = document.getElementById('previewModalMeta');
+      const body = document.getElementById('previewModalBody');
+      const downloadBtn = document.getElementById('previewModalDownloadBtn');
+      const icon = document.getElementById('previewModalIcon');
+      const badge = getFileTypeBadge(file.type);
+
+      title.innerText = file.name;
+      meta.innerText = `${file.size} • ${file.folder || 'Folder'} • আপলোড: ${file.uploadedAt}`;
+      icon.innerHTML = `<i class="${badge.icon}"></i>`;
+      icon.className = `w-9 h-9 rounded-xl ${badge.color} border flex items-center justify-center flex-shrink-0 text-base`;
+
+      downloadBtn.onclick = () => downloadFile(file.id);
+
+      // Reset modal body
+      body.innerHTML = '';
+
+      if (file.type === 'image') {
+        const imgSrc = file.dataUrl || 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1000&auto=format&fit=crop&q=80';
+        body.innerHTML = `
+          <div class="w-full h-full min-h-[300px] flex items-center justify-center p-2">
+            <img src="${imgSrc}" alt="${escapeHtml(file.name)}" class="max-h-[68vh] max-w-full rounded-2xl object-contain shadow-md border border-slate-200">
+          </div>
+        `;
+      } else if (file.type === 'pdf') {
+        if (file.dataUrl && file.dataUrl.startsWith('data:application/pdf')) {
+          // Real uploaded PDF preview via embedded iframe
+          body.innerHTML = `
+            <div class="w-full h-[65vh] bg-white rounded-2xl overflow-hidden shadow-inner border border-slate-200">
+              <iframe src="${file.dataUrl}#toolbar=0" class="w-full h-full border-0"></iframe>
+            </div>
+          `;
+        } else {
+          // Interactive PDF Viewer with Realistic Page Simulation
+          body.innerHTML = `
+            <div class="w-full max-w-2xl bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sm:p-8 flex flex-col space-y-4">
+              <div class="flex items-center justify-between border-b pb-3 text-xs text-slate-500">
+                <span class="flex items-center gap-1.5 font-bold text-rose-600"><i class="fa-regular fa-file-pdf"></i> PDF Viewer (Page 1 of 1)</span>
+                <span class="bg-slate-100 px-2 py-0.5 rounded font-mono">100% Zoom</span>
+              </div>
+              <div class="space-y-3 pt-2 text-slate-700">
+                <div class="h-6 bg-slate-100 rounded w-3/4 animate-pulse"></div>
+                <div class="h-4 bg-slate-100 rounded w-full"></div>
+                <div class="h-4 bg-slate-100 rounded w-5/6"></div>
+                <div class="h-4 bg-slate-100 rounded w-4/6"></div>
+                <div class="p-4 bg-rose-50/60 rounded-xl border border-rose-100 text-xs text-rose-900 mt-4 leading-relaxed">
+                  <p class="font-bold mb-1 flex items-center gap-1"><i class="fa-solid fa-circle-check text-rose-500"></i> ${escapeHtml(file.name)}</p>
+                  <p>ডকুমেন্টটি নিরাপদে ক্লাউড স্টোরেজে এনক্রিপ্ট করে সেভ করা রয়েছে। আপনি ডাউনলোড ছাড়াই সরাসরি এখান থেকে ডকুমেন্টের প্রিভিউ পড়তে পারছেন।</p>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+      } else if (file.type === 'word' || file.name.endsWith('.txt')) {
+        // Document / Word Interactive Reader
+        body.innerHTML = `
+          <div class="w-full max-w-2xl bg-white rounded-2xl shadow-lg border border-slate-200 p-6 sm:p-8 flex flex-col space-y-4">
+            <div class="flex items-center justify-between border-b pb-3 text-xs text-slate-500">
+              <span class="flex items-center gap-1.5 font-bold text-sky-600"><i class="fa-regular fa-file-word"></i> Document Reader</span>
+              <span class="bg-slate-100 px-2 py-0.5 rounded">Ready to read</span>
+            </div>
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-2">
+              <h4 class="text-sm font-bold text-slate-900">${escapeHtml(file.name)}</h4>
+              <p class="leading-relaxed">এই ডকুমেন্টটিতে আরিফ খানের অফিশিয়াল ফাইল ও প্রয়োজনীয় বিবরণ সুরক্ষিত রয়েছে। ডাউনলোড ছাড়াও আপনি সরাসরি ব্রাউজার থেকে ফাইলের বিস্তারিত ও কন্টেন্ট স্ট্যাটাস দেখতে পারবেন।</p>
+            </div>
+          </div>
+        `;
+      } else if (file.type === 'excel') {
+        // Interactive Excel Sheet Viewer
+        body.innerHTML = `
+          <div class="w-full max-w-2xl bg-white rounded-2xl shadow-lg border border-slate-200 p-5 overflow-x-auto">
+            <div class="flex items-center justify-between border-b pb-3 mb-3 text-xs text-slate-500">
+              <span class="flex items-center gap-1.5 font-bold text-emerald-600"><i class="fa-regular fa-file-excel"></i> Excel Sheet Live Preview</span>
+              <span class="bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded font-bold text-[10px]">Sheet1</span>
+            </div>
+            <table class="w-full text-xs text-left border-collapse border border-slate-200 rounded-lg overflow-hidden">
+              <thead class="bg-slate-100 font-bold text-slate-700">
+                <tr>
+                  <th class="border p-2">#</th>
+                  <th class="border p-2">আইটেম বিবরণ</th>
+                  <th class="border p-2">ক্যাটাগরি</th>
+                  <th class="border p-2">স্ট্যাটাস</th>
+                </tr>
+              </thead>
+              <tbody class="text-slate-600">
+                <tr><td class="border p-2">1</td><td class="border p-2">${escapeHtml(file.name)}</td><td class="border p-2">Official</td><td class="border p-2 text-emerald-600 font-bold">Verified</td></tr>
+                <tr><td class="border p-2">2</td><td class="border p-2">Financial Records</td><td class="border p-2">Storage</td><td class="border p-2 text-emerald-600 font-bold">Encrypted</td></tr>
+                <tr><td class="border p-2">3</td><td class="border p-2">Audit Sheet 2026</td><td class="border p-2">Summary</td><td class="border p-2 text-emerald-600 font-bold">Complete</td></tr>
+              </tbody>
+            </table>
+          </div>
+        `;
+      } else {
+        // General Media / Archive Interactive Preview
+        body.innerHTML = `
+          <div class="w-full max-w-lg bg-white rounded-2xl p-6 border border-slate-200 flex flex-col items-center justify-center text-center shadow-lg">
+            <div class="w-16 h-16 rounded-2xl ${badge.color} flex items-center justify-center text-3xl mb-3 border">
+              <i class="${badge.icon}"></i>
+            </div>
+            <h4 class="font-bold text-slate-800 text-sm mb-1">${escapeHtml(file.name)}</h4>
+            <span class="text-xs text-slate-400 font-medium mb-3">${badge.label} File • ${file.size}</span>
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-900 mb-4 max-w-sm">
+              <p><i class="fa-solid fa-shield-check text-amber-600 mr-1"></i> ফাইলটি সফলভাবে লোড হয়েছে এবং ড্রাইভের সাথে সিন্ক্রোনাইজড রয়েছে।</p>
+            </div>
+          </div>
+        `;
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    function closePreviewModal() {
+      document.getElementById('previewModal').classList.add('hidden');
+    }
+
+    function downloadFile(id) {
+      const file = files.find(f => f.id === id);
+      if (!file) return;
+
+      if (file.dataUrl) {
+        // Trigger download via anchor
+        const a = document.createElement('a');
+        a.href = file.dataUrl;
+        a.download = file.name;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      } else {
+        // Simulated mock download payload for sample files
+        const blob = new Blob([`Arif All Document: Official Backup Content for ${file.name}\nSize: ${file.size}\nDate: ${file.uploadedAt}`], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = file.name.endsWith('.txt') ? file.name : `${file.name}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+
+      showCustomToast(`'${file.name}' ডাউনলোড শুরু হয়েছে`, 'info');
+    }
+
+    /* -------------------------------------------------------------
+       RENAME & DELETE ACTIONS
+       ------------------------------------------------------------- */
+    function renameFilePrompt(id) {
+      const file = files.find(f => f.id === id);
+      if (!file) return;
+
+      const currentExt = file.name.includes('.') ? '.' + file.name.split('.').pop() : '';
+      const baseName = file.name.replace(currentExt, '');
+      const newName = prompt('ফাইলটির নতুন নাম লিখুন:', baseName);
+
+      if (newName && newName.trim() !== '') {
+        file.name = newName.trim() + currentExt;
+        saveState();
+        renderFiles();
+        showCustomToast('ফাইলের নাম পরিবর্তিত হয়েছে', 'success');
+      }
+    }
+
+    // Permission popup trigger before deleting
+    function deleteFile(id) {
+      const file = files.find(f => f.id === id);
+      if (!file) return;
+
+      fileIdPendingDelete = id;
+      deleteActionType = 'trash';
+
+      const modal = document.getElementById('confirmDeleteModal');
+      const desc = document.getElementById('confirmDeleteDesc');
+      desc.innerHTML = `<span class="font-bold text-slate-800">"${escapeHtml(file.name)}"</span> ফাইলটি কি মুছে ফেলতে চান? পরবর্তীতে এটি রিসাইকেল বিন থেকে ফিরে পাওয়া যাবে।`;
+      modal.classList.remove('hidden');
+    }
+
+    function cancelDeleteConfirm() {
+      fileIdPendingDelete = null;
+      document.getElementById('confirmDeleteModal').classList.add('hidden');
+    }
+
+    function proceedDeleteConfirm() {
+      const modal = document.getElementById('confirmDeleteModal');
+      modal.classList.add('hidden');
+
+      if (deleteActionType === 'batch_trash') {
+        const count = selectedFileIds.size;
+        const remainingFiles = [];
+        files.forEach(f => {
+          if (selectedFileIds.has(f.id)) {
+            trashFiles.unshift(f);
+          } else {
+            remainingFiles.push(f);
+          }
+        });
+        files = remainingFiles;
+        selectedFileIds.clear();
+        saveState();
+        renderFolders();
+        renderFiles();
+        updateStorageWidget();
+        showCustomToast(`${count}টি ফাইল রিসাইকেল বিনে পাঠানো হয়েছে`, 'rose');
+        return;
+      }
+
+      if (deleteActionType === 'batch_permanent') {
+        const count = selectedTrashIds.size;
+        trashFiles = trashFiles.filter(f => !selectedTrashIds.has(f.id));
+        selectedTrashIds.clear();
+        saveState();
+        renderFiles();
+        viewTrashModal();
+        showCustomToast(`${count}টি ফাইল পার্মানেন্ট ডিলিট করা হয়েছে`, 'rose');
+        return;
+      }
+
+      if (!fileIdPendingDelete) return;
+
+      if (deleteActionType === 'trash') {
+        const index = files.findIndex(f => f.id === fileIdPendingDelete);
+        if (index !== -1) {
+          const item = files.splice(index, 1)[0];
+          trashFiles.unshift(item);
+          saveState();
+          renderFiles();
+          renderFolders();
+          updateStorageWidget();
+          showCustomToast(`'${item.name}' রিসাইকেল বিনে পাঠানো হয়েছে`, 'rose');
+        }
+      } else if (deleteActionType === 'permanent') {
+        trashFiles = trashFiles.filter(f => f.id !== fileIdPendingDelete);
+        saveState();
+        renderFiles();
+        viewTrashModal();
+        showCustomToast('ফাইল সম্পূর্ণ মুছে ফেলা হয়েছে', 'rose');
+      }
+
+      fileIdPendingDelete = null;
+    }
+
+    /* -------------------------------------------------------------
+       TRASH / RECYCLE BIN MODAL & BULK ACTIONS
+       ------------------------------------------------------------- */
+    function viewTrashModal() {
+      const container = document.getElementById('trashListContainer');
+      const modal = document.getElementById('trashModal');
+      const batchBar = document.getElementById('trashBatchActionBar');
+      const selectAll = document.getElementById('trashSelectAll');
+
+      if (selectAll) selectAll.checked = false;
+
+      if (trashFiles.length === 0) {
+        selectedTrashIds.clear();
+        if (batchBar) batchBar.classList.add('hidden');
+        container.innerHTML = `
+          <div class="py-12 text-center text-slate-400">
+            <i class="fa-regular fa-trash-can text-3xl mb-2"></i>
+            <p class="text-xs font-semibold">রিসাইকেল বিন সম্পূর্ণ খালি</p>
+          </div>
+        `;
+      } else {
+        if (batchBar) batchBar.classList.remove('hidden');
+        container.innerHTML = trashFiles.map(file => {
+          const isChecked = selectedTrashIds.has(file.id);
+          return `
+            <div class="flex items-center justify-between p-3 border-b border-slate-100 last:border-0 text-xs ${isChecked ? 'bg-rose-50/40' : ''}">
+              <div class="flex items-center gap-2.5 overflow-hidden">
+                <input type="checkbox" ${isChecked ? 'checked' : ''} onchange="toggleSelectTrashFile('${file.id}', this.checked)" class="w-4 h-4 rounded text-blue-600 border-slate-300 focus:ring-blue-500 cursor-pointer">
+                <i class="fa-regular fa-file text-slate-400 text-sm"></i>
+                <span class="font-bold text-slate-700 truncate max-w-xs">${escapeHtml(file.name)}</span>
+                <span class="text-slate-400">${file.size}</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <button onclick="restoreFromTrash('${file.id}')" class="px-2.5 py-1 font-semibold text-emerald-600 hover:bg-emerald-50 rounded-lg">
+                  <i class="fa-solid fa-rotate-left mr-1"></i> Restore
+                </button>
+                <button onclick="deletePermanently('${file.id}')" class="px-2.5 py-1 font-semibold text-rose-600 hover:bg-rose-50 rounded-lg">
+                  Delete
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      modal.classList.remove('hidden');
+    }
+
+    function toggleSelectTrashFile(id, isChecked) {
+      if (isChecked) {
+        selectedTrashIds.add(id);
+      } else {
+        selectedTrashIds.delete(id);
+      }
+      const selectAll = document.getElementById('trashSelectAll');
+      if (selectAll) {
+        selectAll.checked = trashFiles.length > 0 && selectedTrashIds.size === trashFiles.length;
+      }
+      viewTrashModal();
+    }
+
+    function toggleTrashSelectAll(isChecked) {
+      if (isChecked) {
+        trashFiles.forEach(f => selectedTrashIds.add(f.id));
+      } else {
+        selectedTrashIds.clear();
+      }
+      viewTrashModal();
+    }
+
+    function restoreSelectedFromTrash() {
+      if (selectedTrashIds.size === 0) {
+        showCustomToast('প্রথমে অন্তত একটি ফাইল সিলেক্ট করুন!', 'rose');
+        return;
+      }
+
+      const count = selectedTrashIds.size;
+      const remainingTrash = [];
+
+      trashFiles.forEach(f => {
+        if (selectedTrashIds.has(f.id)) {
+          files.unshift(f);
+        } else {
+          remainingTrash.push(f);
+        }
+      });
+
+      trashFiles = remainingTrash;
+      selectedTrashIds.clear();
+
+      saveState();
+      renderFiles();
+      renderFolders();
+      updateStorageWidget();
+      viewTrashModal();
+      showCustomToast(`${count}টি ফাইল সফলভাবে রিকভার করা হয়েছে!`, 'success');
+    }
+
+    function deleteSelectedPermanentlyPrompt() {
+      if (selectedTrashIds.size === 0) {
+        showCustomToast('প্রথমে অন্তত একটি ফাইল সিলেক্ট করুন!', 'rose');
+        return;
+      }
+
+      const count = selectedTrashIds.size;
+      deleteActionType = 'batch_permanent';
+
+      const modal = document.getElementById('confirmDeleteModal');
+      const desc = document.getElementById('confirmDeleteDesc');
+      desc.innerHTML = `নির্বাচিত <span class="font-bold text-rose-600">${count}টি</span> ফাইল কি চিরতরে মুছে ফেলতে চান? এগুলো আর পুনরুদ্ধার করা যাবে না।`;
+      modal.classList.remove('hidden');
+    }
+
+    function closeTrashModal() {
+      document.getElementById('trashModal').classList.add('hidden');
+    }
+
+    function restoreFromTrash(id) {
+      const index = trashFiles.findIndex(f => f.id === id);
+      if (index === -1) return;
+      const file = trashFiles.splice(index, 1)[0];
+      files.unshift(file);
+      saveState();
+      renderFiles();
+      renderFolders();
+      updateStorageWidget();
+      viewTrashModal();
+      showCustomToast(`'${file.name}' ফিরিয়ে আনা হয়েছে`, 'success');
+    }
+
+    function deletePermanently(id) {
+      const file = trashFiles.find(f => f.id === id);
+      fileIdPendingDelete = id;
+      deleteActionType = 'permanent';
+
+      const modal = document.getElementById('confirmDeleteModal');
+      const desc = document.getElementById('confirmDeleteDesc');
+      desc.innerHTML = `<span class="font-bold text-rose-600">"${escapeHtml(file ? file.name : 'ফাইল')}"</span> স্থায়ীভাবে (Permanently) মুছে ফেলতে চান? এটি আর ফেরত পাওয়া যাবে না!`;
+      modal.classList.remove('hidden');
+    }
+
+    function emptyTrashPermanently() {
+      if (trashFiles.length === 0) return;
+      trashFiles = [];
+      saveState();
+      renderFiles();
+      viewTrashModal();
+      showCustomToast('রিসাইকেল বিন সম্পূর্ণ খালি করা হয়েছে', 'rose');
+    }
+
+    /* -------------------------------------------------------------
+       STORAGE WIDGET CALCULATIONS
+       ------------------------------------------------------------- */
+    function updateStorageWidget() {
+      let totalBytes = files.reduce((acc, curr) => acc + (curr.sizeBytes || 1024 * 1024), 0);
+      
+      // Calculate by types
+      let docBytes = files.filter(f => ['pdf', 'word', 'excel'].includes(f.type)).reduce((acc, f) => acc + (f.sizeBytes || 1024 * 500), 0);
+      let imgBytes = files.filter(f => f.type === 'image').reduce((acc, f) => acc + (f.sizeBytes || 1024 * 1024), 0);
+      let otherBytes = totalBytes - (docBytes + imgBytes);
+      if (otherBytes < 0) otherBytes = 0;
+
+      const maxLimitBytes = 100 * 1024 * 1024 * 1024; // 100 GB storage limit
+      const percentage = Math.min(Math.round((totalBytes / maxLimitBytes) * 100), 100);
+
+      document.getElementById('storagePercentText').innerText = `${percentage || 1}%`;
+      document.getElementById('storageSummaryText').innerText = `${formatFileSize(totalBytes)} / 100 GB`;
+
+      document.getElementById('docStorageLabel').innerText = formatFileSize(docBytes);
+      document.getElementById('imgStorageLabel').innerText = formatFileSize(imgBytes);
+      document.getElementById('otherStorageLabel').innerText = formatFileSize(otherBytes);
+
+      // Circle stroke dash offset (circumference = 2 * PI * 40 ≈ 251.2)
+      const circumference = 251.2;
+      const offset = circumference - (circumference * (percentage || 1)) / 100;
+      const circle = document.getElementById('storageCircleProgress');
+      if (circle) circle.style.strokeDashoffset = offset;
+    }
+
+    /* -------------------------------------------------------------
+       HELPERS & NOTIFICATIONS (NO alert())
+       ------------------------------------------------------------- */
+    function showCustomToast(text, type = 'success') {
+      const toast = document.getElementById('toastMessage');
+      const toastText = document.getElementById('toastText');
+      const toastIcon = document.getElementById('toastIcon');
+
+      toastText.innerText = text;
+
+      if (type === 'success') {
+        toastIcon.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-400"></i>';
+      } else if (type === 'rose') {
+        toastIcon.innerHTML = '<i class="fa-solid fa-trash text-rose-400"></i>';
+      } else {
+        toastIcon.innerHTML = '<i class="fa-solid fa-circle-info text-blue-400"></i>';
+      }
+
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 3000);
+    }
+
+    function showCustomAlert(msg) {
+      showCustomToast(msg, 'info');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+  </script>
+</body>
+</html>
